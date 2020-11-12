@@ -1,26 +1,32 @@
 package com.mediscreen.note.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.io.Serializable;
 
 /**
  * Class materializing a note.
  */
-public class Note {
+@Document
+public class Note implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
-    public String id;
+    private String id;
 
-    public String patientFirstName;
-    public String patientLastName;
+    private String patientLastName;
+    private String patientFirstName;
 
-    public String noteText;
+    private String noteText;
 
     public Note() {
     }
 
-    public Note(String patientFirstName, String patientLastName, String noteText) {
-        this.patientFirstName = patientFirstName;
+    public Note(String patientLastName, String patientFirstName, String noteText) {
         this.patientLastName = patientLastName;
+        this.patientFirstName = patientFirstName;
         this.noteText = noteText;
     }
 
@@ -32,20 +38,20 @@ public class Note {
         this.id = id;
     }
 
-    public String getPatientFirstName() {
-        return patientFirstName;
-    }
-
-    public void setPatientFirstName(String patientFirstName) {
-        this.patientFirstName = patientFirstName;
-    }
-
     public String getPatientLastName() {
         return patientLastName;
     }
 
     public void setPatientLastName(String patientLastName) {
         this.patientLastName = patientLastName;
+    }
+
+    public String getPatientFirstName() {
+        return patientFirstName;
+    }
+
+    public void setPatientFirstName(String patientFirstName) {
+        this.patientFirstName = patientFirstName;
     }
 
     public String getNoteText() {
