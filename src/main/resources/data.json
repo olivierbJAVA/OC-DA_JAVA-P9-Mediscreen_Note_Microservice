@@ -1,0 +1,188 @@
+[
+  {
+  "_class" : "com.mediscreen.note.domain.Note",
+  "patientLastName":"Ferguson",
+  "patientFirstName":"Lucas",
+  "noteText":"Le patient déclare qu'il «se sent très bien»\nPoids égal ou inférieur au poids recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ferguson",
+    "patientFirstName":"Lucas",
+    "noteText":"Le patient déclare qu'il se sent fatigué pendant la journée\nIl se plaint également de douleurs musculaires\nTests de laboratoire indiquant une microalbumine élevée"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ferguson",
+    "patientFirstName":"Lucas",
+    "noteText":"Le patient déclare qu'il ne se sent pas si fatigué que ça\nFumeur, il a arrêté dans les 12 mois précédents\nTests de laboratoire indiquant que les anticorps sont élevés"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Rees",
+    "patientFirstName":"Pippa",
+    "noteText":"Le patient déclare qu'il ressent beaucoup de stress au travail\nIl se plaint également que son audition est anormale dernièrement"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Rees",
+    "patientFirstName":"Pippa",
+    "noteText":"Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois\nIl remarque également que son audition continue d'être anormale"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Rees",
+    "patientFirstName":"Pippa",
+    "noteText":"Tests de laboratoire indiquant une microalbumine élevée"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Rees",
+    "patientFirstName":"Pippa",
+    "noteText":"Le patient déclare que tout semble aller bien\nLe laboratoire rapporte que l'hémoglobine A1C dépasse le niveau recommandé\nLe patient déclare qu’il fume depuis longtemps"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Arnold",
+    "patientFirstName":"Edward",
+    "noteText":"Le patient déclare qu'il fume depuis peu"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Arnold",
+    "patientFirstName":"Edward",
+    "noteText":"Tests de laboratoire indiquant une microalbumine élevée"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Arnold",
+    "patientFirstName":"Edward",
+    "noteText":"Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière\nIl se plaint également de crises d’apnée respiratoire anormales\nTests de laboratoire indiquant un taux de cholestérol LDL élevé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Arnold",
+    "patientFirstName":"Edward",
+    "noteText":"Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Arnold",
+    "patientFirstName":"Edward",
+    "noteText":"Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Sharp",
+    "patientFirstName":"Anthony",
+    "noteText":"Le patient déclare qu'il lui est devenu difficile de monter les escaliers\nIl se plaint également d’être essoufflé\nTests de laboratoire indiquant que les anticorps sont élevés\nRéaction aux médicaments"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Sharp",
+    "patientFirstName":"Anthony",
+    "noteText":"Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Sharp",
+    "patientFirstName":"Anthony",
+    "noteText":"Le patient déclare avoir commencé à fumer depuis peu\nHémoglobine A1C supérieure au niveau recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Sharp",
+    "patientFirstName":"Anthony",
+    "noteText":"Le patient déclare avoir commencé à fumer depuis peu\nHémoglobine A1C supérieure au niveau recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ince",
+    "patientFirstName":"Wendy",
+    "noteText":"Le patient déclare avoir des douleurs au cou occasionnellement\nLe patient remarque également que certains aliments ont un goût différent\nRéaction apparente aux médicaments\nPoids corporel supérieur au poids recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ince",
+    "patientFirstName":"Wendy",
+    "noteText":"Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.\nTaille incluse dans la fourchette concernée"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ince",
+    "patientFirstName":"Wendy",
+    "noteText":"Le patient déclare qu'il souffre encore de douleurs cervicales occasionnelles\nTests de laboratoire indiquant une microalbumine élevée\nFumeur, il a arrêté dans les 12 mois précédents"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ince",
+    "patientFirstName":"Wendy",
+    "noteText":"Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.\nTests de laboratoire indiquant que les anticorps sont élevés"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ross",
+    "patientFirstName":"Tracey",
+    "noteText":"Le patient déclare qu'il se sent bien\nPoids corporel supérieur au poids recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Ross",
+    "patientFirstName":"Tracey",
+    "noteText":"Le patient déclare qu'il se sent bien"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Wilson",
+    "patientFirstName":"Claire",
+    "noteText":"Le patient déclare qu'il se réveille souvent avec une raideur articulaire\nIl se plaint également de difficultés pour s’endormir\nPoids corporel supérieur au poids recommandé\nTests de laboratoire indiquant un taux de cholestérol LDL élevé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Buckland",
+    "patientFirstName":"Max",
+    "noteText":"Les tests de laboratoire indiquent que les anticorps sont élevés\nHémoglobine A1C supérieure au niveau recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Clark",
+    "patientFirstName":"Natalie",
+    "noteText":"Le patient déclare avoir de la difficulté à se concentrer sur ses devoirs scolaires\nHémoglobine A1C supérieure au niveau recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Clark",
+    "patientFirstName":"Natalie",
+    "noteText":"Le patient déclare qu'il s’impatiente facilement en cas d’attente prolongée\nIl signale également que les produits du distributeur automatique ne sont pas bons\nTests de laboratoire signalant des taux anormaux de cellules sanguines"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Clark",
+    "patientFirstName":"Natalie",
+    "noteText":"Le patient signale qu'il est facilement irrité par des broutilles\nIl déclare également que l'aspirateur des voisins fait trop de bruit\nTests de laboratoire indiquant que les anticorps sont élevés"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Bailey",
+    "patientFirstName":"Piers",
+    "noteText":"Le patient déclare qu'il n'a aucun problème"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Bailey",
+    "patientFirstName":"Piers",
+    "noteText":"Le patient déclare qu'il n'a aucun problème\nTaille incluse dans la fourchette concernée\nHémoglobine A1C supérieure au niveau recommandé"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Bailey",
+    "patientFirstName":"Piers",
+    "noteText":"Le patient déclare qu'il n'a aucun problème\nPoids corporel supérieur au poids recommandé\nLe patient a signalé plusieurs épisodes de vertige depuis sa dernière visite"
+  },
+  {
+    "_class" : "com.mediscreen.note.domain.Note",
+    "patientLastName":"Bailey",
+    "patientFirstName":"Piers",
+    "noteText":"Le patient déclare qu'il n'a aucun problème\nTests de laboratoire indiquant une microalbumine élevée"
+  }
+]
