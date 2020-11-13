@@ -66,16 +66,16 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notesByPatientId" endpoint HTTP request to get notes for a patient given its id.
+     * Method managing the GET "/patHistoryByPatientId" endpoint HTTP request to get notes for a patient given its id.
      *
      * @param patientId The id of the patient to get the notes
      * @param model The Model containing the notes
      * @return The name of the View
      */
-    @GetMapping("/notesByPatientId")
-    public String getNotesByPatientId(@RequestParam("patientId") long patientId, Model model) {
+    @GetMapping("/patHistoryByPatientId")
+    public String getPatientHistoryByPatientId(@RequestParam("patId") long patientId, Model model) {
 
-        logger.info("Request : GET /notesByPatientId with patient id = {}", patientId);
+        logger.info("Request : GET /patHistoryByPatientId with patient id = {}", patientId);
 
         List<Note> notes = noteService.findNotesByPatientId(patientId);
         model.addAttribute("notes", notes);
@@ -86,17 +86,17 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/noteByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name.
+     * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name.
      *
      * @param patientLastName The last name of the patient to get the notes
      * @param patientFirstName The first name of the patient to get the notes
      * @param model The Model containing the notes
      * @return The name of the View
      */
-    @GetMapping("/notesByPatientLastNameAndFirstName")
-    public String getNotesByPatientByLastNameAndFirstName(@RequestParam("patientLastName") String patientLastName, @RequestParam("patientFirstName") String patientFirstName, Model model) {
+    @GetMapping("/patHistoryByPatientLastNameAndFirstName")
+    public String getPatientHistoryByPatientLastNameAndFirstName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName, Model model) {
 
-        logger.info("Request : GET /notesByPatientLastNameAndFirstName with patient last name = {} & first name = {}", patientLastName, patientFirstName);
+        logger.info("Request : GET /patHistoryByPatientLastNameAndFirstName with patient last name = {} & first name = {}", patientLastName, patientFirstName);
 
         List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(patientLastName, patientFirstName);
         model.addAttribute("notes", notes);
