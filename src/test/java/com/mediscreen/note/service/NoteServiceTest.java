@@ -97,9 +97,9 @@ public class NoteServiceTest {
     @Test
     public void findNotesByPatientLastNameAndFirstName_whenExist() {
         // ARRANGE
-        Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
-        Note noteToFind2 = new Note("PatientLastName", "PatientFirstName","NoteText2");
-        Note noteToFind3 = new Note("PatientLastName", "PatientFirstName","NoteText3");
+        Note noteToFind1 = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName","NoteText1");
+        Note noteToFind2 = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName","NoteText2");
+        Note noteToFind3 = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName","NoteText3");
 
         List<Note> notesToFind = new ArrayList<>();
         notesToFind.add(noteToFind1);
