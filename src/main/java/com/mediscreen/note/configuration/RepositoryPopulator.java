@@ -8,7 +8,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
 /**
- * Configuration Class used to populate the database with initial data.
+ * Configuration Class used to populate the database with initial data contained in a json file.
  */
 @Profile("dev")
 @Configuration
