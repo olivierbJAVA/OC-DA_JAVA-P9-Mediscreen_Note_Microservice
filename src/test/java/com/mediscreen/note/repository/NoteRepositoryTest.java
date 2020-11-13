@@ -16,7 +16,6 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Class including tests for the Note entity Repository.
@@ -35,6 +34,7 @@ public class NoteRepositoryTest {
     @BeforeEach
     public void setup(){
         mongoTemplate.dropCollection(Note.class);
+        //noteRepositoryUnderTest.deleteAll();
     }
 
     @AfterEach
@@ -53,10 +53,10 @@ public class NoteRepositoryTest {
         mongoTemplate.insert(note3);
 
         // ACT
-        List<Note> listNotes = noteRepositoryUnderTest.findAll();
+        List<Note> notes = noteRepositoryUnderTest.findAll();
 
         // ASSERT
-        assertEquals(3, listNotes.size());
+        assertEquals(3, notes.size());
     }
 
     @Test
@@ -76,18 +76,46 @@ public class NoteRepositoryTest {
     }
 
     @Test
-    public void findNoteByLastNameAndFirstName() {
+    public void findNotesByPatientId() {
         // ARRANGE
-        Note noteToFind = new Note("PatientLastName", "PatientFirstName","NoteText");
-        mongoTemplate.insert(noteToFind);
+        Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
+        noteToFind1.setPatientId(1L);
+        mongoTemplate.insert(noteToFind1);
+
+        Note noteToFind2 = new Note("PatientLastName", "PatientFirstName","NoteText2");
+        noteToFind2.setPatientId(1L);
+        mongoTemplate.insert(noteToFind2);
+
+        Note noteToFind3 = new Note("PatientLastName", "PatientFirstName","NoteText3");
+        noteToFind3.setPatientId(1L);
+        mongoTemplate.insert(noteToFind3);
 
         // ACT
-        Note noteFound = noteRepositoryUnderTest.findByPatientLastNameAndPatientFirstName("PatientLastName", "PatientFirstName");
+        List<Note> notesFound = noteRepositoryUnderTest.findByPatientId(1L);
 
         // ASSERT
-        assertNotNull(noteFound);
-        assertEquals("PatientLastName", noteFound.getPatientLastName());
-        assertEquals("PatientFirstName", noteFound.getPatientFirstName());
-        assertEquals("NoteText", noteFound.getNoteText());
+        assertEquals(3,notesFound.size());
+    }
+
+    @Test
+    public void findNotesByLastNameAndFirstName() {
+        // ARRANGE
+        Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
+        noteToFind1.setPatientId(1L);
+        mongoTemplate.insert(noteToFind1);
+
+        Note noteToFind2 = new Note("PatientLastName", "PatientFirstName","NoteText2");
+        noteToFind2.setPatientId(1L);
+        mongoTemplate.insert(noteToFind2);
+
+        Note noteToFind3 = new Note("PatientLastName", "PatientFirstName","NoteText3");
+        noteToFind3.setPatientId(1L);
+        mongoTemplate.insert(noteToFind3);
+
+        // ACT
+        List<Note> notesFound = noteRepositoryUnderTest.findByPatientLastNameAndPatientFirstName("PatientLastName","PatientFirstName");
+
+        // ASSERT
+        assertEquals(3,notesFound.size());
     }
 }
