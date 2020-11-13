@@ -100,7 +100,7 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void getNotesByPatientsId_whenPatientExist() {
+    public void getPatientHistoryByPatientId_whenPatientExist() {
         //ARRANGE
         Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
         noteToFind1.setPatientId(1L);
@@ -118,8 +118,8 @@ public class NoteControllerTest {
 
         //ACT & ASSERT
         try {
-            mockMvc.perform(get("/notesByPatientId")
-                    .param("patientId","1"))
+            mockMvc.perform(get("/patHistoryByPatientId")
+                    .param("patId","1"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", notesToFind))
                     .andExpect(view().name("notes"));
@@ -130,14 +130,14 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void getNotesByPatientId_whenPatientNotExist() {
+    public void getPatientHistoryByPatientId_whenPatientNotExist() {
         //ARRANGE
         doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientId(1L);
 
         //ACT & ASSERT
         try {
-            mockMvc.perform(get("/notesByPatientId")
-                    .param("patientId","1"))
+            mockMvc.perform(get("/patHistoryByPatientId")
+                    .param("patId","1"))
                     .andExpect(status().isNotFound())
                     .andExpect(view().name("errorResourceNotFound"));
         } catch (Exception e) {
@@ -148,7 +148,7 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void getNotesByPatientLastNameAndFirstName_whenPatientExist() {
+    public void getPatientHistoryByPatientLastNameAndFirstName_whenPatientExist() {
         //ARRANGE
         Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
         Note noteToFind2 = new Note("PatientLastName", "PatientFirstName","NoteText2");
@@ -163,35 +163,35 @@ public class NoteControllerTest {
 
         //ACT & ASSERT
         try {
-            mockMvc.perform(get("/notesByPatientLastNameAndFirstName")
-                    .param("patientLastName","PatientTestLastName")
-                    .param("patientFirstName","PatientTestFirstName"))
+            mockMvc.perform(get("/patHistoryByPatientLastNameAndFirstName")
+                    .param("lastName","PatientLastName")
+                    .param("firstName","PatientFirstName"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", notesToFind))
                     .andExpect(view().name("notes"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
-        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientTestLastName", "PatientTestFirstName");
+        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientLastName", "PatientFirstName");
     }
 
     @Test
-    public void getNotesByPatientLastNameAndFirstName_whenPatientNotExist() {
+    public void getPatientHistoryByPatientLastNameAndFirstName_whenPatientNotExist() {
         //ARRANGE
-        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientLastNameAndFirstName("PatientTestLastName","PatientTestFirstName");
+        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientLastNameAndFirstName("PatientLastName","PatientFirstName");
 
         //ACT & ASSERT
         try {
-            mockMvc.perform(get("/notesByPatientLastNameAndFirstName")
-                    .param("patientLastName","PatientTestLastName")
-                    .param("patientFirstName","PatientTestFirstName"))
+            mockMvc.perform(get("/patHistoryByPatientLastNameAndFirstName")
+                    .param("lastName","PatientLastName")
+                    .param("firstName","PatientFirstName"))
                     .andExpect(status().isNotFound())
                     .andExpect(view().name("errorResourceNotFound"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
 
-        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientTestLastName","PatientTestFirstName");
+        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientLastName","PatientFirstName");
     }
 
 }
