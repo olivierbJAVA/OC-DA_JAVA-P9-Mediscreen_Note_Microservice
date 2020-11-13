@@ -1,5 +1,6 @@
 package com.mediscreen.note.domain;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,6 +16,8 @@ public class Note implements Serializable {
 
     @Id
     private String id;
+
+    private long patientId;
 
     private String patientLastName;
     private String patientFirstName;
@@ -36,6 +39,14 @@ public class Note implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public long getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(long patientId) {
+        this.patientId = patientId;
     }
 
     public String getPatientLastName() {
