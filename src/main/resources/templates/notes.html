@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Home</title>
+<link rel="stylesheet" href="../../css/bootstrap.min.css" >
+</head>
+<body>
+<div class="container">
+	<div class="row"><h2>Notes List</h2></div>
+	<div class="row">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>IdPatient</th>
+					<th>LastName</th>
+					<th>FirstName</th>
+					<th>Note</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr th:each="note : ${notes}">
+				<td th:text="${note.id}"></td>
+				<td th:text="${note.patientId}"></td>
+				<td th:text="${note.patientLastName}"></td>
+				<td th:text="${note.patientFirstName}"></td>
+				<td th:text="${note.noteText}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
