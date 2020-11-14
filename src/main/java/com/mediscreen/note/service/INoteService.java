@@ -44,4 +44,13 @@ public interface INoteService {
      * @return The list of all notes
      */
     List<Note> findAllNotes();
+
+    /**
+     * Update a note.
+     *
+     * @param note The note to update
+     * @return The note updated
+     * @throws ResourceNotFoundException if the note to update does not exist
+     */
+    Note updateNote(Note note) throws ResourceNotFoundException;
 }

@@ -79,4 +79,20 @@ public class NoteServiceImpl implements INoteService {
     public List<Note> findAllNotes() {
         return noteRepository.findAll();
     }
+
+    /**
+     * Update a note.
+     *
+     * @param note The note to update
+     * @return The note updated
+     * @throws ResourceNotFoundException if the note to update does not exist
+     */
+    @Override
+    public Note updateNote(Note note) throws ResourceNotFoundException {
+
+        noteRepository.findById(note.getId()).orElseThrow(() -> new ResourceNotFoundException(note.getId()));
+
+        return noteRepository.save(note);
+
+    }
 }
