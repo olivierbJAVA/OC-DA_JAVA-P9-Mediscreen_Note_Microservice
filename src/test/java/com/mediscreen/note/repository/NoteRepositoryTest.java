@@ -118,4 +118,24 @@ public class NoteRepositoryTest {
         // ASSERT
         assertEquals(3,notesFound.size());
     }
+
+    @Test
+    public void updateNote() {
+        // ARRANGE
+        Note noteToUpdate = new Note("PatientLastName", "PatientFirstName", "NoteText");
+        noteToUpdate.setPatientId(1L);
+        noteToUpdate = mongoTemplate.insert(noteToUpdate);
+
+        // ACT
+        noteToUpdate.setNoteText("NoteTextUpdated");
+        Note noteUpdated = noteRepositoryUnderTest.save(noteToUpdate);
+
+        // ASSERT
+        assertEquals(noteToUpdate.getId(), noteUpdated.getId());
+        assertEquals(noteToUpdate.getNoteText(), noteUpdated.getNoteText());
+        assertEquals(noteToUpdate.getPatientId(), noteUpdated.getPatientId());
+        assertEquals(noteToUpdate.getPatientLastName(), noteUpdated.getPatientLastName());
+        assertEquals(noteToUpdate.getPatientFirstName(), noteUpdated.getPatientFirstName());
+    }
+
 }
