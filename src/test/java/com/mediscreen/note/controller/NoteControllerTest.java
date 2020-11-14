@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +75,7 @@ public class NoteControllerTest {
             mockMvc.perform(get("/notes/5fa9cd63681c104404d45c23"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", noteToFind))
-                    .andExpect(view().name("notes"));
+                    .andExpect(view().name("notes/list"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
@@ -124,7 +123,7 @@ public class NoteControllerTest {
                     .param("patId","1"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", notesToFind))
-                    .andExpect(view().name("notes"));
+                    .andExpect(view().name("notes/list"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
@@ -170,7 +169,7 @@ public class NoteControllerTest {
                     .param("firstName","PatientFirstName"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", notesToFind))
-                    .andExpect(view().name("notes"));
+                    .andExpect(view().name("notes/list"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
@@ -219,7 +218,7 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void updateNoteForm() {
+    public void updateNoteForm_whenNoError() {
         //ARRANGE
         Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
         noteTest.setPatientId(1L);
@@ -243,4 +242,28 @@ public class NoteControllerTest {
         verify(mockNoteService, times(1)).updateNote(any(Note.class));
     }
 
+    @Test
+    public void updateNoteForm_whenError() {
+        //ARRANGE
+        Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
+        noteTest.setPatientId(1L);
+        noteTest.setId("5fa9cd63681c104404d45c23");
+
+        doReturn(noteTest).when(mockNoteService).updateNote(noteTest);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/notes/updateform/5fa9cd63681c104404d45c23")
+                    .param("patientId","1")
+                    .param("patientLastName", "PatientLastName")
+                    .param("patientFirstName", "PatientFirstName"))
+                    // error : mandatory note text is missing
+                    .andExpect(model().attributeHasFieldErrors("note", "noteText"))
+                    .andExpect(view().name("notes/updateform"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, never()).updateNote(any(Note.class));
+    }
 }
