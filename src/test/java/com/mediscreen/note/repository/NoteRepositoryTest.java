@@ -14,8 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Class including tests for the Note entity Repository.
@@ -138,4 +137,21 @@ public class NoteRepositoryTest {
         assertEquals(noteToUpdate.getPatientFirstName(), noteUpdated.getPatientFirstName());
     }
 
+    @Test
+    public void saveNote() {
+        // ARRANGE
+        Note noteToSave = new Note("PatientLastName", "PatientFirstName", "NoteText");
+        noteToSave.setPatientId(1L);
+
+        // ACT
+        Note noteSaved = noteRepositoryUnderTest.save(noteToSave);
+
+        // ASSERT
+        assertNotNull(noteSaved.getId());
+        assertEquals(noteToSave.getId(), noteSaved.getId());
+        assertEquals(noteToSave.getPatientId(), noteSaved.getPatientId());
+        assertEquals(noteToSave.getPatientLastName(), noteSaved.getPatientLastName());
+        assertEquals(noteToSave.getPatientFirstName(), noteSaved.getPatientFirstName());
+        assertEquals(noteToSave.getNoteText(), noteSaved.getNoteText());
+    }
 }
