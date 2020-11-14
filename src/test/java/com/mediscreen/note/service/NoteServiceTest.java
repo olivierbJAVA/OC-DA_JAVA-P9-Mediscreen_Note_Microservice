@@ -183,4 +183,18 @@ public class NoteServiceTest {
         });
         verify(mockNoteRepository, never()).save(any(Note.class));
     }
+
+    @Test
+    public void createNote() {
+        // ARRANGE
+        Note noteToCreate = new Note("PatientLastName", "PatientFirstName", "NoteText");
+        doReturn(noteToCreate).when(mockNoteRepository).save(noteToCreate);
+
+        // ACT
+        Note noteCreated = noteServiceImplUnderTest.createNote(noteToCreate);
+
+        // ASSERT
+        verify(mockNoteRepository, times(1)).save(noteToCreate);
+        assertEquals(noteToCreate, noteCreated);
+    }
 }
