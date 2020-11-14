@@ -12,6 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -265,5 +266,63 @@ public class NoteControllerTest {
         }
 
         verify(mockNoteService, never()).updateNote(any(Note.class));
+    }
+
+    @Test
+    public void addNoteForm() {
+        //ARRANGE
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(get("/notes/addform"))
+                    .andExpect(status().isOk())
+                    .andExpect(view().name("notes/addform"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+    }
+
+    @Test
+    public void validateNoteForm_whenNoErrorInFields() {
+        //ARRANGE
+        Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
+        noteTest.setPatientId(1L);
+
+        doReturn(noteTest).when(mockNoteService).createNote(noteTest);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/notes/validateform")
+                    .param("patientId","1")
+                    .param("patientLastName", "PatientLastName")
+                    .param("patientFirstName", "PatientFirstName")
+                    .param("noteText", "NoteText"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(header().string("Location", "/notes/list"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).createNote(any(Note.class));
+    }
+
+    @Test
+    public void validateNoteForm_whenErrorInFields() {
+        //ARRANGE
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/notes/validateform")
+                    .param("patientId","1")
+                    .param("patientLastName", "PatientLastName")
+                    .param("patientFirstName", "PatientFirstName"))
+                    // error : mandatory note text is missing
+                    .andExpect(model().attributeHasFieldErrors("note", "noteText"))
+                    .andExpect(view().name("notes/addform"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, never()).createNote(any(Note.class));
     }
 }
