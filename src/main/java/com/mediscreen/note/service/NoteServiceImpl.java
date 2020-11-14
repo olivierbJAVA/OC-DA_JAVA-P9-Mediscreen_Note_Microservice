@@ -95,4 +95,16 @@ public class NoteServiceImpl implements INoteService {
         return noteRepository.save(note);
 
     }
+
+    /**
+     * Create a note.
+     *
+     * @param note The note to create
+     * @return The note created
+     */
+    @Override
+    public Note createNote(Note note) {
+
+        return noteRepository.save(note);
+    }
 }

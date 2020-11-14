@@ -53,4 +53,13 @@ public interface INoteService {
      * @throws ResourceNotFoundException if the note to update does not exist
      */
     Note updateNote(Note note) throws ResourceNotFoundException;
+
+    /**
+     * Create a note.
+     *
+     * @param note The note to create
+     * @return The note created
+     * @throws ResourceNotFoundException if the note to create does not exist
+     */
+    Note createNote(Note note);
 }
