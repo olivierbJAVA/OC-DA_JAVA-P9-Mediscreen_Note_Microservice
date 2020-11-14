@@ -12,11 +12,13 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
@@ -50,10 +52,10 @@ public class NoteControllerTest {
 
         //ACT & ASSERT
         try {
-            mockMvc.perform(get("/notes"))
+            mockMvc.perform(get("/notes/list"))
                     .andExpect(status().isOk())
                     .andExpect(model().attribute("notes", notesToFind))
-                    .andExpect(view().name("notes"));
+                    .andExpect(view().name("notes/list"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
@@ -192,6 +194,53 @@ public class NoteControllerTest {
         }
 
         verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientLastName","PatientFirstName");
+    }
+
+    @Test
+    public void showNoteUpdateForm() {
+        //ARRANGE
+        Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
+        noteTest.setPatientId(1L);
+        noteTest.setId("5fa9cd63681c104404d45c23");
+
+        doReturn(noteTest).when(mockNoteService).findNoteById("5fa9cd63681c104404d45c23");
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(get("/notes/updateform/5fa9cd63681c104404d45c23"))
+                    .andExpect(status().isOk())
+                    .andExpect(model().attribute("note", noteTest))
+                    .andExpect(view().name("notes/updateform"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNoteById("5fa9cd63681c104404d45c23");
+    }
+
+    @Test
+    public void updateNoteForm() {
+        //ARRANGE
+        Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
+        noteTest.setPatientId(1L);
+        noteTest.setId("5fa9cd63681c104404d45c23");
+
+        doReturn(noteTest).when(mockNoteService).updateNote(noteTest);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/notes/updateform/5fa9cd63681c104404d45c23")
+                    .param("patientId","1")
+                    .param("patientLastName", "PatientLastName")
+                    .param("patientFirstName", "PatientFirstName")
+                    .param("noteText", "NoteText"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(header().string("Location", "/notes/list"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).updateNote(any(Note.class));
     }
 
 }
