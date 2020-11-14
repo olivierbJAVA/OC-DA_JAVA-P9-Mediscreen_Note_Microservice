@@ -4,8 +4,6 @@ import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,8 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -68,7 +65,7 @@ public class NoteController {
 
         logger.info("Success : note with id {} found, returning '/notes' view", id);
 
-        return "notes";
+        return "notes/list";
     }
 
     /**
@@ -88,7 +85,7 @@ public class NoteController {
 
         logger.info("Success : notes for patient with patient id {}, returning '/notes' view", patientId);
 
-        return "notes";
+        return "notes/list";
     }
 
     /**
@@ -109,7 +106,7 @@ public class NoteController {
 
         logger.info("Success : notes for patient with patient last name {} and first name {} found, returning '/notes' view", patientLastName, patientFirstName);
 
-        return "notes";
+        return "notes/list";
     }
 
     /**
@@ -136,16 +133,24 @@ public class NoteController {
      * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note.
      *
      * @param note The note to update
+     * @param result The BindingResult containing the result of the fields validation
      * @return The name of the View
      */
     @PostMapping("/notes/updateform/{id}")
-    public String updateNoteForm(Note note) {
+    public String updateNoteForm(@Valid Note note, BindingResult result) {
 
         logger.info("Request : POST /notes/updateform/{}", note.getId());
 
+        if (result.hasErrors()) {
+
+            logger.error("Error in fields validation : note with id {} not updated, returning '/notes/update' view", note.getId());
+
+            return "notes/updateform";
+        }
+
         noteService.updateNote(note);
 
-        logger.info("Success : note with id {} updated, redirect to '/notes/list", note.getId());
+        logger.info("Success : note with id {} updated, redirect to '/notes/list'", note.getId());
 
         return "redirect:/notes/list";
     }
