@@ -15,8 +15,8 @@
 				<tr>
 					<th>Id</th>
 					<th>IdPatient</th>
-					<th>LastName</th>
-					<th>FirstName</th>
+					<th>PatientLastName</th>
+					<th>PatientFirstName</th>
 					<th>Note</th>
 				</tr>
 			</thead>
@@ -27,6 +27,9 @@
 				<td th:text="${note.patientLastName}"></td>
 				<td th:text="${note.patientFirstName}"></td>
 				<td th:text="${note.noteText}"></td>
+				<td style="width: 15%" class="text-center">
+					<a th:href="@{/notes/updateform/{id}(id=${note.id})}">Edit</a>
+				</td>
 			</tr>
 			</tbody>
 		</table>
