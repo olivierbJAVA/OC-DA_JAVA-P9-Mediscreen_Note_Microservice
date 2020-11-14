@@ -3,6 +3,7 @@ package com.mediscreen.note.repository;
 import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.exception.ResourceNotFoundException;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
