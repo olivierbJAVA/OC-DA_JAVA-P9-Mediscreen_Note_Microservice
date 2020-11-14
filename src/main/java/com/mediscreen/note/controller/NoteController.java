@@ -155,4 +155,43 @@ public class NoteController {
         return "redirect:/notes/list";
     }
 
+    /**
+     * Method managing the GET "/notes/addform" endpoint HTTP request to add a note using a form.
+     *
+     * @param note An empty note
+     * @return The name of the View
+     */
+    @GetMapping("/notes/addform")
+    public String addNoteForm(Note note) {
+
+        logger.info("Request : GET /notes/addform");
+        logger.info("Success : returning 'notes/addform' view");
+
+        return "notes/addform";
+    }
+
+    /**
+     * Method managing the POST "/notes/validateform" endpoint HTTP request to add a note using a form.
+     *
+     * @param note The note to add
+     * @param result The BindingResult containing the result of the fields validation
+     * @return The name of the View
+     */
+    @PostMapping("/notes/validateform")
+    public String validateNoteForm(@Valid Note note, BindingResult result) {
+
+        logger.info("Request : POST /notes/validateform");
+
+        if (!result.hasErrors()) {
+            noteService.createNote(note);
+
+            logger.info("Success : new note created, redirect to '/notes/list' view");
+
+            return "redirect:/notes/list";
+        }
+
+        logger.error("Error in fields validation : new note not created, returning '/notes/addform' view");
+
+        return "notes/addform";
+    }
 }
