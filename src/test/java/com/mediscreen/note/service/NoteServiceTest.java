@@ -9,6 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -152,5 +153,34 @@ public class NoteServiceTest {
         // ASSERT
         verify(mockNoteRepository, times(1)).findAll();
         assertEquals(notesToFind, notesFound);
+    }
+
+    @Test
+    public void updateNote_whenIdExist() {
+        // ARRANGE
+        Note noteToUpdate = new Note("PatientLastName", "PatientFirstName", "NoteText");
+        noteToUpdate.setPatientId(1L);
+        noteToUpdate.setId("5fa9cd63681c104404d45c23");
+        doReturn(Optional.of(noteToUpdate)).when(mockNoteRepository).findById("5fa9cd63681c104404d45c23");
+        doReturn(noteToUpdate).when(mockNoteRepository).save(noteToUpdate);
+
+        // ACT
+        Note noteUpdated = noteServiceImplUnderTest.updateNote(noteToUpdate);
+
+        // ASSERT
+        verify(mockNoteRepository, times(1)).save(noteToUpdate);
+        assertEquals(noteToUpdate, noteUpdated);
+    }
+
+    @Test
+    public void updateNote_whenIdNotExist() {
+        // ARRANGE
+        doReturn(Optional.empty()).when(mockNoteRepository).findById("5fa9cd63681c104404d45c24");
+
+        // ACT & ASSERT
+        assertThrows(ResourceNotFoundException.class, () -> {
+            noteServiceImplUnderTest.findNoteById("5fa9cd63681c104404d45c24");
+        });
+        verify(mockNoteRepository, never()).save(any(Note.class));
     }
 }
