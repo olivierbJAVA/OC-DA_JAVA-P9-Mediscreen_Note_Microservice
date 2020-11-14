@@ -4,12 +4,18 @@ import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -27,22 +33,22 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes" endpoint HTTP request to get the list of all notes.
+     * Method managing the GET "/notes/list" endpoint HTTP request to get the list of all notes.
      *
      * @param model The Model containing the list of all notes
      * @return The name of the View
      */
-    @GetMapping("/notes")
+    @GetMapping("/notes/list")
     public String getNotes(Model model) {
 
-        logger.info("Request : GET /notes");
+        logger.info("Request : GET /notes/list");
 
         List<Note> notes = noteService.findAllNotes();
         model.addAttribute("notes", notes);
 
-        logger.info("Success : notes found, returning 'notes' view");
+        logger.info("Success : notes found, returning 'notes/list' view");
 
-        return "notes";
+        return "notes/list";
     }
 
     /**
@@ -105,4 +111,43 @@ public class NoteController {
 
         return "notes";
     }
+
+    /**
+     * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note.
+     *
+     * @param id The id of the note to update
+     * @param model The Model containing the note to update
+     * @return The name of the View
+     */
+    @GetMapping("/notes/updateform/{id}")
+    public String showNoteUpdateForm(@PathVariable("id") String id, Model model) {
+
+        logger.info("Request : GET /notes/updateform/{}", id);
+
+        Note note = noteService.findNoteById(id);
+        model.addAttribute("note", note);
+
+        logger.info("Success : note with id {} to update found, returning '/notes/updateform' view", id);
+
+        return "notes/updateform";
+    }
+
+    /**
+     * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note.
+     *
+     * @param note The note to update
+     * @return The name of the View
+     */
+    @PostMapping("/notes/updateform/{id}")
+    public String updateNoteForm(Note note) {
+
+        logger.info("Request : POST /notes/updateform/{}", note.getId());
+
+        noteService.updateNote(note);
+
+        logger.info("Success : note with id {} updated, redirect to '/notes/list", note.getId());
+
+        return "redirect:/notes/list";
+    }
+
 }
