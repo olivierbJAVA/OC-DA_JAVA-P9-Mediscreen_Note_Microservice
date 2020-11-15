@@ -1,9 +1,12 @@
 package com.mediscreen.note.controller;
 
 import com.mediscreen.note.domain.Note;
+import com.mediscreen.note.exception.ResourceNotFoundException;
+import com.mediscreen.note.repository.INoteRepositoryCustom;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,8 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -183,6 +190,19 @@ public class NoteController {
         logger.info("Request : POST /notes/validateform");
 
         if (!result.hasErrors()) {
+
+            try {
+                List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
+                // Patient is already existing -> we get its id
+                note.setPatientId(notes.get(0).getPatientId());
+                //noteService.createNote(note);
+
+            } catch (ResourceNotFoundException e) {
+                // New patient -> we put its id at the max id in the database +1
+                note.setPatientId(noteService.getMaxPatientId()+1L);
+                //noteService.createNote(note);
+            }
+
             noteService.createNote(note);
 
             logger.info("Success : new note created, redirect to '/notes/list' view");
@@ -193,5 +213,78 @@ public class NoteController {
         logger.error("Error in fields validation : new note not created, returning '/notes/addform' view");
 
         return "notes/addform";
+    }
+
+    /**
+     * Method managing the POST "/patHistory/add" endpoint HTTP request to add a patient using a command line HTTP client and parameters in the URL request.
+     *
+     * @param patId The id of the patient
+     * @param note The note to add to the patient history
+     * @return A ResponseEntity containing the location of the note created and the HTTP status code
+     */
+    @PostMapping("/patHistory/add")
+    public ResponseEntity<Note> addNoteByPatientId(@RequestParam long patId, @RequestParam String note) {
+
+        logger.info("Request : POST /patHistory/add");
+
+        Note noteToAdd = new Note();
+
+        try {
+            List<Note> notes = noteService.findNotesByPatientId(patId);
+            // Patient is already existing -> we get its id, last name and first name
+            noteToAdd.setPatientId(patId);
+            noteToAdd.setPatientLastName(notes.get(0).getPatientLastName());
+            noteToAdd.setPatientFirstName(notes.get(0).getPatientFirstName());
+            noteToAdd.setNoteText(note);
+            noteService.createNote(noteToAdd);
+
+        } catch (ResourceNotFoundException e) {
+            throw new ResourceNotFoundException(patId);
+        }
+
+        logger.info("Success : new note created");
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(noteToAdd.getId()).toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    /**
+     * Method managing the POST "/patHistory/addByLastNameAndFirstName" endpoint HTTP request to add a patient using a command line HTTP client and parameters in the URL request.
+     *
+     * @param lastName The last name of the patient
+     * @param firstName The first name of the patient
+     * @param note The note to add to the patient history
+     * @return A ResponseEntity containing the location of the note created and the HTTP status code
+     */
+    @PostMapping("/patHistory/addByLastNameAndFirstName")
+    public ResponseEntity<Note> addNoteByPatientLastNameAndFirstName(@RequestParam String lastName, @RequestParam String firstName, @RequestParam String note) {
+
+        logger.info("Request : POST /patHistory/addByLastNameAndFirstName");
+
+        Note noteToAdd = new Note();
+
+        try {
+            List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(lastName, firstName);
+            // Patient is already existing -> we get its id, last name and first name
+            noteToAdd.setPatientId(notes.get(0).getPatientId());
+        } catch (ResourceNotFoundException e) {
+            // New patient -> we put its id at the max id in the database +1
+            noteToAdd.setPatientId(noteService.getMaxPatientId()+1L);
+        }
+
+        noteToAdd.setPatientLastName(lastName);
+        noteToAdd.setPatientFirstName(firstName);
+        noteToAdd.setNoteText(note);
+
+        noteService.createNote(noteToAdd);
+
+        logger.info("Success : new patientToAdd created");
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}")
+                .buildAndExpand(noteToAdd.getId()).toUri();
+
+        return ResponseEntity.created(location).build();
     }
 }
