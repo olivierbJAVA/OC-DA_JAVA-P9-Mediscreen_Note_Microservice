@@ -2,6 +2,7 @@ package com.mediscreen.note.service;
 
 import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.exception.ResourceNotFoundException;
+import com.mediscreen.note.repository.INoteRepositoryCustom;
 import com.mediscreen.note.repository.NoteRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -29,6 +30,9 @@ public class NoteServiceTest {
 
     @Mock
     private NoteRepository mockNoteRepository;
+
+    @Mock
+    private INoteRepositoryCustom mockNoteRepositoryCustomImpl;
 
     @Test
     public void findNoteById_whenIdExist() {
@@ -196,5 +200,18 @@ public class NoteServiceTest {
         // ASSERT
         verify(mockNoteRepository, times(1)).save(noteToCreate);
         assertEquals(noteToCreate, noteCreated);
+    }
+
+    @Test
+    public void getMaxPatientId() {
+        // ARRANGE
+        doReturn(1L).when(mockNoteRepositoryCustomImpl).findMaxPatientId();
+
+        // ACT
+        long masPatientIdFound = noteServiceImplUnderTest.getMaxPatientId();
+
+        // ASSERT
+        verify(mockNoteRepositoryCustomImpl, times(1)).findMaxPatientId();
+        assertEquals(1L, masPatientIdFound);
     }
 }
