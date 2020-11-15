@@ -10,6 +10,6 @@ public interface INoteRepositoryCustom {
      *
      * @return The max patient id
      */
-    long getMaxPatientId();
+    long findMaxPatientId();
 
 }

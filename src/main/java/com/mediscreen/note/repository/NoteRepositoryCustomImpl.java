@@ -24,7 +24,7 @@ public class NoteRepositoryCustomImpl implements INoteRepositoryCustom {
      * @return The max patient id
      */
     @Override
-    public long getMaxPatientId() {
+    public long findMaxPatientId() {
         Query query = new Query();
         query.with(Sort.by(Sort.Direction.DESC, "patientId"));
         query.limit(1);
