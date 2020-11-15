@@ -6,10 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -50,13 +47,13 @@ public class NoteRepositoryCustomImplTest {
     }
 
     @Test
-    public void getMaxPatientId() {
+    public void findMaxPatientId() {
         // ARRANGE
         Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
         mongoTemplate.save(noteTest);
 
         // ACT
-        long maxPatientId = noteRepositoryCustomUnderTest.getMaxPatientId();
+        long maxPatientId = noteRepositoryCustomUnderTest.findMaxPatientId();
 
         // ASSERT
         assertEquals(0, maxPatientId);
