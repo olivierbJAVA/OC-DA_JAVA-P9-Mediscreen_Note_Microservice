@@ -283,26 +283,61 @@ public class NoteControllerTest {
     }
 
     @Test
-    public void validateNoteForm_whenNoErrorInFields() {
+    public void validateNoteForm_whenNoErrorInFieldsAndPatientAlreadyExist() {
         //ARRANGE
-        Note noteTest = new Note("PatientLastName", "PatientFirstName","NoteText");
-        noteTest.setPatientId(1L);
+        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        noteAlreadyExist.setPatientId(1L);
 
-        doReturn(noteTest).when(mockNoteService).createNote(noteTest);
+        List<Note> notesAlreadyExist = new ArrayList<>();
+        notesAlreadyExist.add(noteAlreadyExist);
+
+        Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
+
+        doReturn(notesAlreadyExist).when(mockNoteService).findNotesByPatientLastNameAndFirstName("PatientLastNameAlreadyExist","PatientFirstNameAlreadyExist");
+
+        doReturn(noteNew).when(mockNoteService).createNote(noteNew);
 
         //ACT & ASSERT
         try {
             mockMvc.perform(post("/notes/validateform")
                     .param("patientId","1")
-                    .param("patientLastName", "PatientLastName")
-                    .param("patientFirstName", "PatientFirstName")
-                    .param("noteText", "NoteText"))
+                    .param("patientLastName", "PatientLastNameAlreadyExist")
+                    .param("patientFirstName", "PatientFirstNameAlreadyExist")
+                    .param("noteText", "NoteTextNew"))
                     .andExpect(status().is3xxRedirection())
                     .andExpect(header().string("Location", "/notes/list"));
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
 
+        verify(mockNoteService, times(1)).createNote(any(Note.class));
+    }
+
+    @Test
+    public void validateNoteForm_whenNoErrorInFieldsAndPatientNotAlreadyExist() {
+        //ARRANGE
+        Note noteNewPatient = new Note("NewPatientLastName", "NewPatientFirstName","NoteTextNew");
+
+        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientLastNameAndFirstName("NewPatientLastName","NewPatientFirstName");
+
+        doReturn(1L).when(mockNoteService).getMaxPatientId();
+
+        doReturn(noteNewPatient).when(mockNoteService).createNote(noteNewPatient);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/notes/validateform")
+                    //.param("patientId","1")
+                    .param("patientLastName", "NewPatientLastName")
+                    .param("patientFirstName", "NewPatientFirstName")
+                    .param("noteText", "NoteTextNew"))
+                    .andExpect(status().is3xxRedirection())
+                    .andExpect(header().string("Location", "/notes/list"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).getMaxPatientId();
         verify(mockNoteService, times(1)).createNote(any(Note.class));
     }
 
@@ -324,5 +359,114 @@ public class NoteControllerTest {
         }
 
         verify(mockNoteService, never()).createNote(any(Note.class));
+    }
+
+    @Test
+    public void addNoteByPatientId_whenPatientAlreadyExist() {
+        //ARRANGE
+        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        noteAlreadyExist.setPatientId(1L);
+
+        List<Note> notesAlreadyExist = new ArrayList<>();
+        notesAlreadyExist.add(noteAlreadyExist);
+
+        Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
+
+        doReturn(notesAlreadyExist).when(mockNoteService).findNotesByPatientId(1L);
+
+        doReturn(noteNew).when(mockNoteService).createNote(noteNew);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/patHistory/add")
+                    .param("patId","1")
+                    .param("note", "NoteTextNew"))
+                    .andExpect(status().isCreated());
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNotesByPatientId(1L);
+        verify(mockNoteService, times(1)).createNote(any(Note.class));
+    }
+
+    @Test
+    public void addNoteByPatientId_whenPatientNotAlreadyExist() {
+        //ARRANGE
+        Note noteNewPatient = new Note("NewPatientLastName", "NewPatientFirstName","NoteTextNew");
+        noteNewPatient.setPatientId(1L);
+
+        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientId(1L);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/patHistory/add")
+                    .param("patId","1")
+                    .param("note", "NoteTextNew"))
+                    .andExpect(status().isNotFound());
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNotesByPatientId(1L);
+        verify(mockNoteService, never()).createNote(any(Note.class));
+    }
+
+    @Test
+    public void addNoteByPatientLastNameAndFirstName_whenPatientAlreadyExist() {
+        //ARRANGE
+        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        noteAlreadyExist.setPatientId(1L);
+
+        List<Note> notesAlreadyExist = new ArrayList<>();
+        notesAlreadyExist.add(noteAlreadyExist);
+
+        Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
+
+        doReturn(notesAlreadyExist).when(mockNoteService).findNotesByPatientLastNameAndFirstName("PatientLastNameAlreadyExist","PatientFirstNameAlreadyExist");
+
+        doReturn(noteNew).when(mockNoteService).createNote(noteNew);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/patHistory/addByLastNameAndFirstName")
+                    //.param("patId","1")
+                    .param("lastName", "PatientLastNameAlreadyExist")
+                    .param("firstName", "PatientFirstNameAlreadyExist")
+                    .param("note", "NoteTextNew"))
+                    .andExpect(status().isCreated());
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientLastNameAlreadyExist","PatientFirstNameAlreadyExist");
+        verify(mockNoteService, times(1)).createNote(any(Note.class));
+    }
+
+    @Test
+    public void addNoteByPatientLastNameAndFirstName_whenPatientNotAlreadyExist() {
+        //ARRANGE
+        Note noteNewPatient = new Note("NewPatientLastName", "NewPatientFirstName","NoteTextNew");
+
+        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientLastNameAndFirstName("NewPatientLastName", "NewPatientFirstName");
+
+        doReturn(1L).when(mockNoteService).getMaxPatientId();
+
+        doReturn(noteNewPatient).when(mockNoteService).createNote(noteNewPatient);
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(post("/patHistory/addByLastNameAndFirstName")
+                    .param("lastName", "NewPatientLastName")
+                    .param("firstName", "NewPatientFirstName")
+                    .param("note", "NoteTextNew"))
+                    .andExpect(status().isCreated());
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("NewPatientLastName", "NewPatientFirstName");
+        verify(mockNoteService, times(1)).getMaxPatientId();
+        verify(mockNoteService, times(1)).createNote(any(Note.class));
     }
 }
