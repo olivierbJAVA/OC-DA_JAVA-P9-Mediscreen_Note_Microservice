@@ -1,6 +1,5 @@
 package com.mediscreen.note.domain;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import javax.validation.constraints.NotBlank;
@@ -19,7 +18,11 @@ public class Note implements Serializable {
     private String id;
 
     private long patientId;
+
+    @NotBlank(message = "PatientLastName is mandatory")
     private String patientLastName;
+
+    @NotBlank(message = "PatientFirstName is mandatory")
     private String patientFirstName;
 
     @NotBlank(message = "Note text is mandatory")
@@ -28,7 +31,7 @@ public class Note implements Serializable {
     public Note() {
     }
 
-    public Note(String patientLastName, String patientFirstName, @NotBlank(message = "Note text is mandatory") String noteText) {
+    public Note(@NotBlank(message = "PatientLastName is mandatory") String patientLastName, @NotBlank(message = "PatientFirstName is mandatory") String patientFirstName, @NotBlank(message = "Note text is mandatory") String noteText) {
         this.patientLastName = patientLastName;
         this.patientFirstName = patientFirstName;
         this.noteText = noteText;
