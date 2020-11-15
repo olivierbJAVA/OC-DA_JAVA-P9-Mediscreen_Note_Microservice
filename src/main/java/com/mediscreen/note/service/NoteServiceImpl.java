@@ -2,6 +2,7 @@ package com.mediscreen.note.service;
 
 import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.exception.ResourceNotFoundException;
+import com.mediscreen.note.repository.INoteRepositoryCustom;
 import com.mediscreen.note.repository.NoteRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,11 @@ import java.util.List;
 public class NoteServiceImpl implements INoteService {
 
     private NoteRepository noteRepository;
+    private INoteRepositoryCustom noteRepositoryCustom;
 
-    public NoteServiceImpl(NoteRepository noteRepository) {
+    public NoteServiceImpl(NoteRepository noteRepository, INoteRepositoryCustom noteRepositoryCustom) {
         this.noteRepository = noteRepository;
+        this.noteRepositoryCustom = noteRepositoryCustom;
     }
 
     /**
@@ -106,5 +109,16 @@ public class NoteServiceImpl implements INoteService {
     public Note createNote(Note note) {
 
         return noteRepository.save(note);
+    }
+
+    /**
+     * Return the maximum (highest) patient id in the mongo database.
+     *
+     * @return The max patient id
+     */
+    @Override
+    public long getMaxPatientId() {
+
+        return noteRepositoryCustom.findMaxPatientId();
     }
 }

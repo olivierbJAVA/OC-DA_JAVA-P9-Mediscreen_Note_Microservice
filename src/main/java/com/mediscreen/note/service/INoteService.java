@@ -62,4 +62,12 @@ public interface INoteService {
      * @throws ResourceNotFoundException if the note to create does not exist
      */
     Note createNote(Note note);
+
+    /**
+     * Return the maximum (highest) patient id in the mongo database.
+     *
+     * @return The max patient id
+     */
+    long getMaxPatientId();
+
 }
