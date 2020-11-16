@@ -6,6 +6,7 @@ import com.mediscreen.note.repository.INoteRepositoryCustom;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -83,6 +84,18 @@ public class NoteController {
      * @return The name of the View
      */
     @GetMapping("/patHistoryByPatientId")
+    public ResponseEntity<List<Note>> getPatientHistoryByPatientId(@RequestParam("patId") long patientId, Model model) {
+
+        logger.info("Request : GET /patHistoryByPatientId with patient id = {}", patientId);
+
+        List<Note> notes = noteService.findNotesByPatientId(patientId);
+
+        logger.info("Success : notes for patient with patient id {}, returning '/notes' view", patientId);
+
+        return new ResponseEntity<>(notes, HttpStatus.FOUND);
+    }
+/*
+    @GetMapping("/patHistoryByPatientId")
     public String getPatientHistoryByPatientId(@RequestParam("patId") long patientId, Model model) {
 
         logger.info("Request : GET /patHistoryByPatientId with patient id = {}", patientId);
@@ -94,7 +107,7 @@ public class NoteController {
 
         return "notes/list";
     }
-
+*/
     /**
      * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name.
      *
