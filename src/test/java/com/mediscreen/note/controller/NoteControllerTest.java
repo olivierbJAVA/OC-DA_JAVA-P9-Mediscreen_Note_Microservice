@@ -12,7 +12,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -122,9 +121,7 @@ public class NoteControllerTest {
         try {
             mockMvc.perform(get("/patHistoryByPatientId")
                     .param("patId","1"))
-                    .andExpect(status().isOk())
-                    .andExpect(model().attribute("notes", notesToFind))
-                    .andExpect(view().name("notes/list"));
+                    .andExpect(status().isFound());
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
@@ -140,8 +137,7 @@ public class NoteControllerTest {
         try {
             mockMvc.perform(get("/patHistoryByPatientId")
                     .param("patId","1"))
-                    .andExpect(status().isNotFound())
-                    .andExpect(view().name("errorResourceNotFound"));
+                    .andExpect(status().isNotFound());
         } catch (Exception e) {
             logger.error("Error in MockMvc", e);
         }
