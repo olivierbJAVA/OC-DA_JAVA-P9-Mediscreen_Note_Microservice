@@ -27,7 +27,7 @@
 				<td th:text="${note.patientId}"></td>
 				<td th:text="${note.patientLastName}"></td>
 				<td th:text="${note.patientFirstName}"></td>
-				<td th:text="${note.noteText}"></td>
+				<td th:utext="${note.noteText}"></td>
 				<td style="width: 15%" class="text-center">
 					<a th:href="@{/notes/updateform/{id}(id=${note.id})}">Edit</a>
 				</td>
