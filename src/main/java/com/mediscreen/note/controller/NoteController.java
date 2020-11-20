@@ -2,7 +2,6 @@ package com.mediscreen.note.controller;
 
 import com.mediscreen.note.domain.Note;
 import com.mediscreen.note.exception.ResourceNotFoundException;
-import com.mediscreen.note.repository.INoteRepositoryCustom;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -71,7 +68,7 @@ public class NoteController {
         Note note = noteService.findNoteById(id);
         model.addAttribute("notes", note);
 
-        logger.info("Success : note with id {} found, returning '/notes' view", id);
+        logger.info("Success : note with id {} found, returning '/notes/list' view", id);
 
         return "notes/list";
     }
@@ -90,7 +87,7 @@ public class NoteController {
 
         List<Note> notes = noteService.findNotesByPatientId(patientId);
 
-        logger.info("Success : notes for patient with patient id {}, returning '/notes' view", patientId);
+        logger.info("Success : notes for patient with patient id {} found", patientId);
 
         return new ResponseEntity<>(notes, HttpStatus.FOUND);
     }
@@ -124,13 +121,13 @@ public class NoteController {
         List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(patientLastName, patientFirstName);
         model.addAttribute("notes", notes);
 
-        logger.info("Success : notes for patient with patient last name {} and first name {} found, returning '/notes' view", patientLastName, patientFirstName);
+        logger.info("Success : notes for patient with patient last name {} and first name {} found, returning '/notes/list' view", patientLastName, patientFirstName);
 
         return "notes/list";
     }
 
     /**
-     * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note.
+     * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note using an HTML form.
      *
      * @param id The id of the note to update
      * @param model The Model containing the note to update
@@ -150,7 +147,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note.
+     * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note using an HTML form.
      *
      * @param note The note to update
      * @param result The BindingResult containing the result of the fields validation
@@ -176,7 +173,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/addform" endpoint HTTP request to add a note using a form.
+     * Method managing the GET "/notes/addform" endpoint HTTP request to add a note using a HTML form.
      *
      * @param note An empty note
      * @return The name of the View
@@ -191,7 +188,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the POST "/notes/validateform" endpoint HTTP request to add a note using a form.
+     * Method managing the POST "/notes/validateform" endpoint HTTP request to add a note using a HTML form.
      *
      * @param note The note to add
      * @param result The BindingResult containing the result of the fields validation
@@ -208,12 +205,10 @@ public class NoteController {
                 List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
                 // Patient is already existing -> we get its id
                 note.setPatientId(notes.get(0).getPatientId());
-                //noteService.createNote(note);
 
             } catch (ResourceNotFoundException e) {
                 // New patient -> we put its id at the max id in the database +1
                 note.setPatientId(noteService.getMaxPatientId()+1L);
-                //noteService.createNote(note);
             }
 
             noteService.createNote(note);
