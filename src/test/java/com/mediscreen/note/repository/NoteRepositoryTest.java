@@ -148,7 +148,6 @@ public class NoteRepositoryTest {
 
         // ASSERT
         assertNotNull(noteSaved.getId());
-        assertEquals(noteToSave.getId(), noteSaved.getId());
         assertEquals(noteToSave.getPatientId(), noteSaved.getPatientId());
         assertEquals(noteToSave.getPatientLastName(), noteSaved.getPatientLastName());
         assertEquals(noteToSave.getPatientFirstName(), noteSaved.getPatientFirstName());
