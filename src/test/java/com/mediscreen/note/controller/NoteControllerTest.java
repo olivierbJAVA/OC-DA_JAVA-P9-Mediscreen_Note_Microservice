@@ -281,11 +281,11 @@ public class NoteControllerTest {
     @Test
     public void validateNoteForm_whenNoErrorInFieldsAndPatientAlreadyExist() {
         //ARRANGE
-        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
-        noteAlreadyExist.setPatientId(1L);
+        Note notePatientAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        notePatientAlreadyExist.setPatientId(1L);
 
         List<Note> notesAlreadyExist = new ArrayList<>();
-        notesAlreadyExist.add(noteAlreadyExist);
+        notesAlreadyExist.add(notePatientAlreadyExist);
 
         Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
 
@@ -296,7 +296,7 @@ public class NoteControllerTest {
         //ACT & ASSERT
         try {
             mockMvc.perform(post("/notes/validateform")
-                    .param("patientId","1")
+                    //.param("patientId","1")
                     .param("patientLastName", "PatientLastNameAlreadyExist")
                     .param("patientFirstName", "PatientFirstNameAlreadyExist")
                     .param("noteText", "NoteTextNew"))
@@ -344,7 +344,7 @@ public class NoteControllerTest {
         //ACT & ASSERT
         try {
             mockMvc.perform(post("/notes/validateform")
-                    .param("patientId","1")
+                    //.param("patientId","1")
                     .param("patientLastName", "PatientLastName")
                     .param("patientFirstName", "PatientFirstName"))
                     // error : mandatory note text is missing
@@ -360,11 +360,11 @@ public class NoteControllerTest {
     @Test
     public void addNoteByPatientId_whenPatientAlreadyExist() {
         //ARRANGE
-        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
-        noteAlreadyExist.setPatientId(1L);
+        Note notePatientAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        notePatientAlreadyExist.setPatientId(1L);
 
         List<Note> notesAlreadyExist = new ArrayList<>();
-        notesAlreadyExist.add(noteAlreadyExist);
+        notesAlreadyExist.add(notePatientAlreadyExist);
 
         Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
 
@@ -389,9 +389,6 @@ public class NoteControllerTest {
     @Test
     public void addNoteByPatientId_whenPatientNotAlreadyExist() {
         //ARRANGE
-        Note noteNewPatient = new Note("NewPatientLastName", "NewPatientFirstName","NoteTextNew");
-        noteNewPatient.setPatientId(1L);
-
         doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientId(1L);
 
         //ACT & ASSERT
@@ -411,11 +408,11 @@ public class NoteControllerTest {
     @Test
     public void addNoteByPatientLastNameAndFirstName_whenPatientAlreadyExist() {
         //ARRANGE
-        Note noteAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
-        noteAlreadyExist.setPatientId(1L);
+        Note notePatientAlreadyExist = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextAlreadyExist");
+        notePatientAlreadyExist.setPatientId(1L);
 
         List<Note> notesAlreadyExist = new ArrayList<>();
-        notesAlreadyExist.add(noteAlreadyExist);
+        notesAlreadyExist.add(notePatientAlreadyExist);
 
         Note noteNew = new Note("PatientLastNameAlreadyExist", "PatientFirstNameAlreadyExist","NoteTextNew");
 
