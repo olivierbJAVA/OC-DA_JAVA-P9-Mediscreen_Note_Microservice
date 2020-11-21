@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+    database:
+        image: mongo
+        container_name: mongo-docker
+        restart: always
+        ports:
+            - 27017:27017
+        volumes:
+            - mongodata:/data/db
+        networks:
+            - ms-net
+
+    note:
+        image: note
+        container_name: note
+        restart: always
+        ports:
+            - 8082:8082
+        networks:
+            - ms-net
+        depends_on:
+            - database
+
+networks:
+  ms-net:
+      driver: bridge
+
+volumes:
+    mongodata:
