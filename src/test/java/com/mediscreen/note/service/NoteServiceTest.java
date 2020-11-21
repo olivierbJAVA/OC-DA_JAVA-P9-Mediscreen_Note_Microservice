@@ -9,8 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +22,7 @@ import static org.mockito.Mockito.*;
 /**
  * Class including unit tests for the NoteServiceImpl Class.
  */
+@ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 public class NoteServiceTest {
 
@@ -39,7 +40,7 @@ public class NoteServiceTest {
         // ARRANGE
         Note noteToFind = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName", "NoteTestText");
         noteToFind.setId("idNoteTest");
-        doReturn(Optional.of(noteToFind)).when(mockNoteRepository).findById(noteToFind.getId());
+        doReturn(Optional.of(noteToFind)).when(mockNoteRepository).findById("idNoteTest");
 
         // ACT
         Note noteFound = noteServiceImplUnderTest.findNoteById("idNoteTest");
@@ -141,8 +142,8 @@ public class NoteServiceTest {
         noteToFind1.setId("idNoteTest1");
         Note noteToFind2 = new Note("NoteTestPatientLastName2", "NoteTestPatientFirstName2", "NoteTestText2");
         noteToFind2.setId("idNoteTest2");
-        Note noteToFind3 = new Note("NoteTestPatientLastName1", "NoteTestPatientFirstName1", "NoteTestText1");
-        noteToFind1.setId("idNoteTest1");
+        Note noteToFind3 = new Note("NoteTestPatientLastName3", "NoteTestPatientFirstName3", "NoteTestText3");
+        noteToFind3.setId("idNoteTest3");
 
         List<Note> notesToFind = new ArrayList<>();
         notesToFind.add(noteToFind1);
@@ -208,10 +209,10 @@ public class NoteServiceTest {
         doReturn(1L).when(mockNoteRepositoryCustomImpl).findMaxPatientId();
 
         // ACT
-        long masPatientIdFound = noteServiceImplUnderTest.getMaxPatientId();
+        long maxPatientIdFound = noteServiceImplUnderTest.getMaxPatientId();
 
         // ASSERT
         verify(mockNoteRepositoryCustomImpl, times(1)).findMaxPatientId();
-        assertEquals(1L, masPatientIdFound);
+        assertEquals(1L, maxPatientIdFound);
     }
 }
