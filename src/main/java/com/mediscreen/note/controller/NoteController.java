@@ -35,7 +35,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/list" endpoint HTTP request to get the list of all notes.
+     * Method managing the GET "/notes/list" endpoint HTTP request to get the list of all notes, in HTML format.
      *
      * @param model The Model containing the list of all notes
      * @return The name of the View
@@ -54,7 +54,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/{id}" endpoint HTTP request to get a note given its id.
+     * Method managing the GET "/notes/{id}" endpoint HTTP request to get a note given its id, in HTML format.
      *
      * @param id The id of the note to get
      * @param model The Model containing the note to get
@@ -74,11 +74,11 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/patHistoryByPatientId" endpoint HTTP request to get notes for a patient given its id.
+     * Method managing the GET "/patHistoryByPatientId" endpoint HTTP request to get notes for a patient given its id, in JSON format.
      *
      * @param patientId The id of the patient to get the notes
      * @param model The Model containing the notes
-     * @return The name of the View
+     * @return A ResponseEntity object containing the list of notes and the HTTP status code
      */
     @GetMapping("/patHistoryByPatientId")
     public ResponseEntity<List<Note>> getPatientHistoryByPatientId(@RequestParam("patId") long patientId, Model model) {
@@ -106,7 +106,7 @@ public class NoteController {
     }
 */
     /**
-     * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name.
+     * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name, in HTML format.
      *
      * @param patientLastName The last name of the patient to get the notes
      * @param patientFirstName The first name of the patient to get the notes
@@ -127,7 +127,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note using an HTML form.
+     * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note using a HTML form.
      *
      * @param id The id of the note to update
      * @param model The Model containing the note to update
@@ -147,7 +147,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note using an HTML form.
+     * Method managing the POST "/notes/updateform/{id}" endpoint HTTP request to update a note using a HTML form.
      *
      * @param note The note to update
      * @param result The BindingResult containing the result of the fields validation
