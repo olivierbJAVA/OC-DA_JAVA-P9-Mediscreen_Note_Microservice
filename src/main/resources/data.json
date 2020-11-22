@@ -215,12 +215,5 @@
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
     "noteText":"Le patient déclare qu'il n'a aucun problème<br>Tests de laboratoire indiquant une microalbumine élevée"
-  },
-  {
-    "_class" : "com.mediscreen.note.domain.Note",
-    "patientId":11,
-    "patientLastName":"Bonheur",
-    "patientFirstName":"Olivier",
-    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Tests de laboratoire indiquant une microalbumine élevée"
   }
 ]

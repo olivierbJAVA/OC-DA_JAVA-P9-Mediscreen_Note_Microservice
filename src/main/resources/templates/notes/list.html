@@ -14,8 +14,10 @@
 		<table class="table table-bordered">
 			<thead>
 				<tr>
+					<!--
 					<th>Id</th>
 					<th>IdPatient</th>
+					-->
 					<th>PatientLastName</th>
 					<th>PatientFirstName</th>
 					<th>Note</th>
@@ -23,8 +25,10 @@
 			</thead>
 			<tbody>
 			<tr th:each="note : ${notes}">
+				<!--
 				<td th:text="${note.id}"></td>
 				<td th:text="${note.patientId}"></td>
+				-->
 				<td th:text="${note.patientLastName}"></td>
 				<td th:text="${note.patientFirstName}"></td>
 				<td th:utext="${note.noteText}"></td>
