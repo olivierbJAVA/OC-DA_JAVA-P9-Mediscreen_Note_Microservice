@@ -90,7 +90,7 @@ Then you can import and run the application from your favorite IDE.
 
 ### Endpoints
 
-For information about EndPoints that are exposed by the Mediscreen Patient Microservice, please refer to the document in this repository called : 
+For information about EndPoints that are exposed by the Mediscreen Note Microservice, please refer to the document in this repository called : 
 
 ### Docker container deployment
 
@@ -98,13 +98,13 @@ A Dockerfile is present in this repository in order to deploy the application in
 >In order to build a Docker Image using this Dockerfile, please use the following command line (in the *Dockerfile* directory) :
 `docker build -t note .`
 
-When the Patient Docker image is created, you can run the Microservice using the *docker-compose.yml* file present in this repository.
+When the Note Docker image is created, you can run the Microservice using the *docker-compose.yml* file present in this repository.
 >To do this, please use the following command line (in the *docker-compose.yml* directory) :
 `docker-compose up`
  
 This will :
 - Create and launch a MongoDB server in a container
-- Launch the Patient application in a container
+- Launch the Note application in a container
 - Create a dedicated Docker bridge network to enable their communication 
 - Map the directory containing the MongoDB data in an external directory so that data are note lost if container is deleted
  
