@@ -74,6 +74,27 @@ public class NoteController {
     }
 
     /**
+     * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name, in HTML format.
+     *
+     * @param patientLastName The last name of the patient to get the notes
+     * @param patientFirstName The first name of the patient to get the notes
+     * @param model The Model containing the notes
+     * @return The name of the View
+     */
+    @GetMapping("/patHistoryByPatientLastNameAndFirstName")
+    public String getPatientHistoryByPatientLastNameAndFirstName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName, Model model) {
+
+        logger.info("Request : GET /patHistoryByPatientLastNameAndFirstName with patient last name = {} & first name = {}", patientLastName, patientFirstName);
+
+        List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(patientLastName, patientFirstName);
+        model.addAttribute("notes", notes);
+
+        logger.info("Success : notes for patient with patient last name {} and first name {} found, returning '/notes/list' view", patientLastName, patientFirstName);
+
+        return "notes/list";
+    }
+
+    /**
      * Method managing the GET "/patHistoryByPatientId" endpoint HTTP request to get notes for a patient given its id, in JSON format.
      *
      * @param patientId The id of the patient to get the notes
@@ -105,26 +126,6 @@ public class NoteController {
         return "notes/list";
     }
 */
-    /**
-     * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name, in HTML format.
-     *
-     * @param patientLastName The last name of the patient to get the notes
-     * @param patientFirstName The first name of the patient to get the notes
-     * @param model The Model containing the notes
-     * @return The name of the View
-     */
-    @GetMapping("/patHistoryByPatientLastNameAndFirstName")
-    public String getPatientHistoryByPatientLastNameAndFirstName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName, Model model) {
-
-        logger.info("Request : GET /patHistoryByPatientLastNameAndFirstName with patient last name = {} & first name = {}", patientLastName, patientFirstName);
-
-        List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(patientLastName, patientFirstName);
-        model.addAttribute("notes", notes);
-
-        logger.info("Success : notes for patient with patient last name {} and first name {} found, returning '/notes/list' view", patientLastName, patientFirstName);
-
-        return "notes/list";
-    }
 
     /**
      * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note using a HTML form.
