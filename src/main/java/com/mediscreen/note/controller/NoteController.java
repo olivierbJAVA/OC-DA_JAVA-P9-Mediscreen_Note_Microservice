@@ -5,15 +5,18 @@ import com.mediscreen.note.exception.ResourceNotFoundException;
 import com.mediscreen.note.service.INoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
@@ -28,6 +31,12 @@ public class NoteController {
 
     private static final Logger logger = LoggerFactory.getLogger(NoteController.class);
 
+    @Value("${patientMicroservice.port}")
+    private String patientMicroservicePort;
+
+    @Value("${patientMicroservice.address}")
+    private String patientMicroserviceAddress;
+    
     private INoteService noteService;
 
     public NoteController(INoteService noteService) {
@@ -295,5 +304,22 @@ public class NoteController {
                 .buildAndExpand(noteToAdd.getId()).toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+    /**
+     * Method managing the GET "/patients/list" endpoint HTTP request to redirect to the patients list view in the Mediscreen Patient Microservice
+     *
+     * @return A ModelAndView containing the redirection information
+     */
+    @GetMapping("/patients/list")
+    public ModelAndView getPatientsList() {
+
+        logger.info("Request : GET /patients/list");
+
+        logger.info("Success : redirect to '/patients/list' view in Mediscreen Patient Microservice");
+
+        String redirectedURL = "http://" + patientMicroserviceAddress + ":" + patientMicroservicePort + "/patients/list";
+
+        return new ModelAndView("redirect:" + redirectedURL);
     }
 }
