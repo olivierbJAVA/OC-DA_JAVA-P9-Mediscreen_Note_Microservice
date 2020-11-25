@@ -234,7 +234,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the POST "/patHistory/add" endpoint HTTP request to add a patient using a command line HTTP client and parameters in the URL request.
+     * Method managing the POST "/patHistory/add" endpoint HTTP request to add a patient based on its id and using a command line HTTP client and parameters in the URL request.
      *
      * @param patId The id of the patient
      * @param note The note to add to the patient history
@@ -269,7 +269,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the POST "/patHistory/addByLastNameAndFirstName" endpoint HTTP request to add a patient using a command line HTTP client and parameters in the URL request.
+     * Method managing the POST "/patHistory/addByLastNameAndFirstName" endpoint HTTP request to add a patient based on its last name and first name and using a command line HTTP client and parameters in the URL request.
      *
      * @param lastName The last name of the patient
      * @param firstName The first name of the patient
