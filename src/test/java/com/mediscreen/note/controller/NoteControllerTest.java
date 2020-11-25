@@ -462,4 +462,17 @@ public class NoteControllerTest {
         verify(mockNoteService, times(1)).getMaxPatientId();
         verify(mockNoteService, times(1)).createNote(any(Note.class));
     }
+
+    @Test
+    public void getPatientsList() {
+        //ARRANGE
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(get("/patients/list"))
+                    .andExpect(status().is3xxRedirection());
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+    }
 }
