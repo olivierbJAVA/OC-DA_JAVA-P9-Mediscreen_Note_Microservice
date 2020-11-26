@@ -104,7 +104,7 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/patHistoryByFamilyAndGiven" endpoint HTTP request to get notes for a patient given its last name and first name, in JSON format.
+     * Method managing the GET "/notes/patHistoryByFamilyAndGiven" endpoint HTTP request to get notes for a patient given its last name and first name, in JSON format.
      *
      * @param patientLastName The last name of the patient to get the notes
      * @param patientFirstName The first name of the patient to get the notes
