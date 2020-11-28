@@ -32,7 +32,7 @@
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Le patient déclare avoir fait une réaction aux médicaments au cours des 3 derniers mois<br>Il remarque également que son audition continue d'être anormale"
+    "noteText":"Le patient déclare avoir fait une reaction aux médicaments au cours des 3 derniers mois<br>Il remarque également que son audition continue d'être anormale"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
@@ -46,7 +46,7 @@
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Le patient déclare que tout semble aller bien<br>Le laboratoire rapporte que l'hémoglobine A1C dépasse le niveau recommandé<br>Le patient déclare qu’il fume depuis longtemps"
+    "noteText":"Le patient déclare que tout semble aller bien<br>Le laboratoire rapporte que l'Hemoglobine A1C dépasse le niveau recommandé<br>Le patient déclare qu’il fume depuis longtemps"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
@@ -67,28 +67,28 @@
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière<br>Il se plaint également de crises d’apnée respiratoire anormales<br>Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+    "noteText":"Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière<br>Il se plaint également de crises d’apnée respiratoire anormales<br>Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+    "noteText":"Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+    "noteText":"Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare qu'il lui est devenu difficile de monter les escaliers<br>Il se plaint également d’être essoufflé<br>Tests de laboratoire indiquant que les anticorps sont élevés<br>Réaction aux médicaments"
+    "noteText":"Le patient déclare qu'il lui est devenu difficile de monter les escaliers<br>Il se plaint également d’être essoufflé<br>Tests de laboratoire indiquant que les anticorps sont élevés<br>Reaction aux médicaments"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
@@ -102,21 +102,21 @@
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hémoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hemoglobine A1C supérieure au niveau recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hémoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hemoglobine A1C supérieure au niveau recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 5,
     "patientLastName":"Ince",
     "patientFirstName":"Wendy",
-    "noteText":"Le patient déclare avoir des douleurs au cou occasionnellement<br>Le patient remarque également que certains aliments ont un goût différent<br>Réaction apparente aux médicaments<br>Poids corporel supérieur au poids recommandé"
+    "noteText":"Le patient déclare avoir des douleurs au cou occasionnellement<br>Le patient remarque également que certains aliments ont un goût différent<br>Reaction apparente aux médicaments<br>Poids corporel supérieur au poids recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
@@ -158,21 +158,21 @@
     "patientId": 7,
     "patientLastName":"Wilson",
     "patientFirstName":"Claire",
-    "noteText":"Le patient déclare qu'il se réveille souvent avec une raideur articulaire<br>Il se plaint également de difficultés pour s’endormir<br>Poids corporel supérieur au poids recommandé<br>Tests de laboratoire indiquant un taux de cholestérol LDL élevé"
+    "noteText":"Le patient déclare qu'il se réveille souvent avec une raideur articulaire<br>Il se plaint également de difficultés pour s’endormir<br>Poids corporel supérieur au poids recommandé<br>Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 8,
     "patientLastName":"Buckland",
     "patientFirstName":"Max",
-    "noteText":"Les tests de laboratoire indiquent que les anticorps sont élevés<br>Hémoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Les tests de laboratoire indiquent que les anticorps sont élevés<br>Hemoglobine A1C supérieure au niveau recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 9,
     "patientLastName":"Clark",
     "patientFirstName":"Natalie",
-    "noteText":"Le patient déclare avoir de la difficulté à se concentrer sur ses devoirs scolaires<br>Hémoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Le patient déclare avoir de la difficulté à se concentrer sur ses devoirs scolaires<br>Hemoglobine A1C supérieure au niveau recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
@@ -200,7 +200,7 @@
     "patientId": 10,
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
-    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Taille incluse dans la fourchette concernée<br>Hémoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Taille incluse dans la fourchette concernée<br>Hemoglobine A1C supérieure au niveau recommandé"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
