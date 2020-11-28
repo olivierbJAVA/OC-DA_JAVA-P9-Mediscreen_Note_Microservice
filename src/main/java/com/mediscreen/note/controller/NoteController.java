@@ -103,16 +103,16 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/patHistoryByFamilyAndGiven" endpoint HTTP request to get notes for a patient given its last name and first name, in JSON format.
+     * Method managing the GET "/patHistoryByFamilyAndGiven" endpoint HTTP request to get notes for a patient given its last name and first name, in JSON format.
      *
      * @param patientLastName The last name of the patient to get the notes
      * @param patientFirstName The first name of the patient to get the notes
      * @return The name of the View
      */
-    @GetMapping("/notes/patHistoryByFamilyAndGiven")
+    @GetMapping("/patHistoryByFamilyAndGiven")
     public ResponseEntity<List<Note>> getPatientHistoryByFamilyAndGiven(@RequestParam("family") String patientLastName, @RequestParam("given") String patientFirstName) {
 
-        logger.info("Request : GET /notes/patHistoryByFamilyAndGiven with patient family = {} & given = {}", patientLastName, patientFirstName);
+        logger.info("Request : GET /patHistoryByFamilyAndGiven with patient family = {} & given = {}", patientLastName, patientFirstName);
 
         List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(patientLastName, patientFirstName);
 
