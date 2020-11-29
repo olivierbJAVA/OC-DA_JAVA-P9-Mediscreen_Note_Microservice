@@ -101,7 +101,7 @@ public class NoteServiceTest {
     }
 
     @Test
-    public void findNotesByPatientLastNameAndFirstName_whenExist() {
+    public void findNotesByPatientLastNameAndFirstName() {
         // ARRANGE
         Note noteToFind1 = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName","NoteText1");
         Note noteToFind2 = new Note("NoteTestPatientLastName", "NoteTestPatientFirstName","NoteText2");
@@ -121,7 +121,7 @@ public class NoteServiceTest {
         verify(mockNoteRepository, times(1)).findByPatientLastNameAndPatientFirstName("NoteTestPatientLastName", "NoteTestPatientFirstName");
         assertEquals(notesToFind, notesFound);
     }
-
+/*
     @Test
     public void findNotesByPatientLastNameAndFirstName_whenNotExist() {
         // ARRANGE
@@ -134,7 +134,7 @@ public class NoteServiceTest {
         });
         verify(mockNoteRepository, times(1)).findByPatientLastNameAndPatientFirstName("PatientTestLastNameNotExist", "PatientTestFirstNameNotExist");
     }
-
+*/
     @Test
     public void findAllNotes() {
         // ARRANGE
