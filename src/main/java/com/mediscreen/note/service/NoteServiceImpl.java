@@ -59,17 +59,16 @@ public class NoteServiceImpl implements INoteService {
      * @param patientLastName The last name of the patient
      * @param patientFirstName The first name of the patient
      * @return The list of notes corresponding to the patient last name and first name
-     * @throws ResourceNotFoundException if no note is found for the given patient last name and first name
      */
     @Override
-    public List<Note> findNotesByPatientLastNameAndFirstName(String patientLastName, String patientFirstName) throws ResourceNotFoundException {
+    public List<Note> findNotesByPatientLastNameAndFirstName(String patientLastName, String patientFirstName) {
 
         List<Note> notes = noteRepository.findByPatientLastNameAndPatientFirstName(patientLastName, patientFirstName);
-
+        /*
         if(notes.isEmpty()) {
             throw new ResourceNotFoundException(patientLastName, patientFirstName);
         }
-
+        */
         return notes;
     }
 
