@@ -62,26 +62,6 @@ public class NoteController {
     }
 
     /**
-     * Method managing the GET "/notes/{id}" endpoint HTTP request to get a note given its id, in HTML format.
-     *
-     * @param id The id of the note to get
-     * @param model The Model containing the note to get
-     * @return The name of the View
-     */
-    @GetMapping("/notes/{id}")
-    public String getNoteById(@PathVariable("id") String id, Model model) {
-
-        logger.info("Request : GET /notes/{}", id);
-
-        Note note = noteService.findNoteById(id);
-        model.addAttribute("notes", note);
-
-        logger.info("Success : note with id {} found, returning '/notes/list' view", id);
-
-        return "notes/list";
-    }
-
-    /**
      * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name, in HTML format.
      *
      * @param patientLastName The last name of the patient to get the notes
@@ -228,7 +208,7 @@ public class NoteController {
         logger.info("Request : POST /notes/validateform");
 
         if (!result.hasErrors()) {
-
+            /*
             try {
                 List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
                 // Patient is already existing -> we get its id
@@ -237,6 +217,17 @@ public class NoteController {
             } catch (ResourceNotFoundException e) {
                 // New patient -> we put its id at the max id in the database +1
                 note.setPatientId(noteService.getMaxPatientId()+1L);
+            }
+            */
+
+            List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
+
+            if (notes.isEmpty()) {
+                // New patient for Notes -> we put its id at the max id in the database +1
+                note.setPatientId(noteService.getMaxPatientId()+1L);
+            } else {
+                // Patient is already existing -> we get its id from notes
+                note.setPatientId(notes.get(0).getPatientId());
             }
 
             noteService.createNote(note);
@@ -300,7 +291,7 @@ public class NoteController {
         logger.info("Request : POST /patHistory/addByLastNameAndFirstName");
 
         Note noteToAdd = new Note();
-
+/*
         try {
             List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(lastName, firstName);
             // Patient is already existing -> we get its id, last name and first name
@@ -308,6 +299,16 @@ public class NoteController {
         } catch (ResourceNotFoundException e) {
             // New patient -> we put its id at the max id in the database +1
             noteToAdd.setPatientId(noteService.getMaxPatientId()+1L);
+        }
+*/
+        List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(lastName, firstName);
+
+        if (notes.isEmpty()) {
+            // New patient for Notes -> we put its id at the max id in the database +1
+            noteToAdd.setPatientId(noteService.getMaxPatientId()+1L);
+        } else {
+            // Patient is already existing -> we get its id from notes
+            noteToAdd.setPatientId(notes.get(0).getPatientId());
         }
 
         noteToAdd.setPatientLastName(lastName);
