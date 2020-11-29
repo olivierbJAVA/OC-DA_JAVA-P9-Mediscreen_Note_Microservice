@@ -63,6 +63,44 @@ public class NoteControllerTest {
     }
 
     @Test
+    public void getNoteById_whenIdExist() {
+        //ARRANGE
+        Note noteToFind = new Note("PatientLastName", "PatientFirstName","NoteText");
+        noteToFind.setId("5fa9cd63681c104404d45c23");
+
+        doReturn(noteToFind).when(mockNoteService).findNoteById("5fa9cd63681c104404d45c23");
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(get("/notes/5fa9cd63681c104404d45c23"))
+                    .andExpect(status().isOk())
+                    .andExpect(model().attribute("notes", noteToFind))
+                    .andExpect(view().name("notes/list"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNoteById("5fa9cd63681c104404d45c23");
+    }
+
+    @Test
+    public void getNoteById_whenIdNotExist() {
+        //ARRANGE
+        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNoteById("5fa9cd63681c104404d45c24");
+
+        //ACT & ASSERT
+        try {
+            mockMvc.perform(get("/notes/5fa9cd63681c104404d45c24"))
+                    .andExpect(status().isNotFound())
+                    .andExpect(view().name("errorResourceNotFound"));
+        } catch (Exception e) {
+            logger.error("Error in MockMvc", e);
+        }
+
+        verify(mockNoteService, times(1)).findNoteById("5fa9cd63681c104404d45c24");
+    }
+
+    @Test
     public void getPatientHistoryByPatientLastNameAndFirstName_whenPatientExist() {
         //ARRANGE
         Note noteToFind1 = new Note("PatientLastName", "PatientFirstName","NoteText1");
