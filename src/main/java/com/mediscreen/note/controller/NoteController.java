@@ -62,6 +62,26 @@ public class NoteController {
     }
 
     /**
+     * Method managing the GET "/notes/{id}" endpoint HTTP request to get a note given its id, in HTML format.
+     *
+     * @param id The id of the note to get
+     * @param model The Model containing the note to get
+     * @return The name of the View
+     */
+    @GetMapping("/notes/{id}")
+    public String getNoteById(@PathVariable("id") String id, Model model) {
+
+        logger.info("Request : GET /notes/{}", id);
+
+        Note note = noteService.findNoteById(id);
+        model.addAttribute("notes", note);
+
+        logger.info("Success : note with id {} found, returning '/notes/list' view", id);
+
+        return "notes/list";
+    }
+
+    /**
      * Method managing the GET "/patHistoryByPatientLastNameAndFirstName" endpoint HTTP request to get notes for a patient given its last name and first name, in HTML format.
      *
      * @param patientLastName The last name of the patient to get the notes
