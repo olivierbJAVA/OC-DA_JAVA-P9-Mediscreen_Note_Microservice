@@ -34,10 +34,9 @@ public interface INoteService {
      * @param patientLastName The last name of the patient
      * @param patientFirstName The first name of the patient
      * @return The list of notes corresponding to the patient last name and first name
-     * @throws ResourceNotFoundException if no note is found for the given patient last name and first name
      */
-    List<Note> findNotesByPatientLastNameAndFirstName(String patientLastName, String patientFirstName) throws ResourceNotFoundException;
-
+    //List<Note> findNotesByPatientLastNameAndFirstName(String patientLastName, String patientFirstName) throws ResourceNotFoundException;
+    List<Note> findNotesByPatientLastNameAndFirstName(String patientLastName, String patientFirstName);
     /**
      * Return all notes.
      *
