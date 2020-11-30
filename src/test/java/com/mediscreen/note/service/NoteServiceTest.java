@@ -121,20 +121,7 @@ public class NoteServiceTest {
         verify(mockNoteRepository, times(1)).findByPatientLastNameAndPatientFirstName("NoteTestPatientLastName", "NoteTestPatientFirstName");
         assertEquals(notesToFind, notesFound);
     }
-/*
-    @Test
-    public void findNotesByPatientLastNameAndFirstName_whenNotExist() {
-        // ARRANGE
-        List<Note> emptyListNotesToFind = new ArrayList<>();
-        doReturn(emptyListNotesToFind).when(mockNoteRepository).findByPatientLastNameAndPatientFirstName("PatientTestLastNameNotExist", "PatientTestFirstNameNotExist");
 
-        // ACT & ASSERT
-        assertThrows(ResourceNotFoundException.class, () -> {
-            noteServiceImplUnderTest.findNotesByPatientLastNameAndFirstName("PatientTestLastNameNotExist", "PatientTestFirstNameNotExist");
-        });
-        verify(mockNoteRepository, times(1)).findByPatientLastNameAndPatientFirstName("PatientTestLastNameNotExist", "PatientTestFirstNameNotExist");
-    }
-*/
     @Test
     public void findAllNotes() {
         // ARRANGE
