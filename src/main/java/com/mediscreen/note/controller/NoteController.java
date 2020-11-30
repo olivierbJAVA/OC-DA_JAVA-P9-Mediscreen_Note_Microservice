@@ -30,12 +30,9 @@ public class NoteController {
 
     private static final Logger logger = LoggerFactory.getLogger(NoteController.class);
 
-    @Value("${patientMicroservice.port}")
-    private String patientMicroservicePort;
+    @Value("${patientMicroserviceUrl}")
+    private String patientMicroserviceUrl;
 
-    @Value("${patientMicroservice.address}")
-    private String patientMicroserviceAddress;
-    
     private INoteService noteService;
 
     public NoteController(INoteService noteService) {
@@ -357,7 +354,7 @@ public class NoteController {
 
         logger.info("Success : redirect to '/patients/list' view in Mediscreen Patient Microservice");
 
-        String redirectedURL = "http://" + patientMicroserviceAddress + ":" + patientMicroservicePort + "/patients/list";
+        String redirectedURL = "http://" + patientMicroserviceUrl + "/patients/list";
 
         return new ModelAndView("redirect:" + redirectedURL);
     }
