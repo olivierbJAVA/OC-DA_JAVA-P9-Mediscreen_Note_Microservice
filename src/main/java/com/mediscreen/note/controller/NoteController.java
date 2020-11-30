@@ -225,17 +225,6 @@ public class NoteController {
         logger.info("Request : POST /notes/validateform");
 
         if (!result.hasErrors()) {
-            /*
-            try {
-                List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
-                // Patient is already existing -> we get its id
-                note.setPatientId(notes.get(0).getPatientId());
-
-            } catch (ResourceNotFoundException e) {
-                // New patient -> we put its id at the max id in the database +1
-                note.setPatientId(noteService.getMaxPatientId()+1L);
-            }
-            */
 
             List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(note.getPatientLastName(), note.getPatientFirstName());
 
@@ -308,16 +297,7 @@ public class NoteController {
         logger.info("Request : POST /patHistory/addByLastNameAndFirstName");
 
         Note noteToAdd = new Note();
-/*
-        try {
-            List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(lastName, firstName);
-            // Patient is already existing -> we get its id, last name and first name
-            noteToAdd.setPatientId(notes.get(0).getPatientId());
-        } catch (ResourceNotFoundException e) {
-            // New patient -> we put its id at the max id in the database +1
-            noteToAdd.setPatientId(noteService.getMaxPatientId()+1L);
-        }
-*/
+
         List<Note> notes = noteService.findNotesByPatientLastNameAndFirstName(lastName, firstName);
 
         if (notes.isEmpty()) {
