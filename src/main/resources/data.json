@@ -4,216 +4,203 @@
   "patientId": 1,
   "patientLastName":"Ferguson",
   "patientFirstName":"Lucas",
-  "noteText":"Le patient déclare qu'il «se sent très bien»<br>Poids égal ou inférieur au poids recommandé"
+  "noteText":"Patient states that they are feeling terrific<br>Weight at or below recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 1,
     "patientLastName":"Ferguson",
     "patientFirstName":"Lucas",
-    "noteText":"Le patient déclare qu'il se sent fatigué pendant la journée<br>Il se plaint également de douleurs musculaires<br>Tests de laboratoire indiquant une microalbumine élevée"
+    "noteText":"The patient reports that he feels tired during the day<br>He also complains of muscle pain<br>Lab reports Microalbumine high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 1,
     "patientLastName":"Ferguson",
     "patientFirstName":"Lucas",
-    "noteText":"Le patient déclare qu'il ne se sent pas si fatigué que ça<br>Fumeur, il a arrêté dans les 12 mois précédents<br>Tests de laboratoire indiquant que les anticorps sont élevés"
+    "noteText":"The patient states that he does not feel that tired<br>Smoker, he quit in the previous 12 months<br>Lab reports Antibodies high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Le patient déclare qu'il ressent beaucoup de stress au travail<br>Il se plaint également que son audition est anormale dernièrement"
+    "noteText":"Patient states that they are feeling a great deal of stress at work <br>Patient also complains that their hearing seems Abnormal as of late"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Le patient déclare avoir fait une reaction aux médicaments au cours des 3 derniers mois<br>Il remarque également que son audition continue d'être anormale"
+    "noteText":"Patient states that they have had a Reaction to medication within last 3 months<br>Patient also complains that their hearing continues to be Abnormal"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Tests de laboratoire indiquant une microalbumine élevée"
+    "noteText":"Lab reports Microalbumine high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 2,
     "patientLastName":"Rees",
     "patientFirstName":"Pippa",
-    "noteText":"Le patient déclare que tout semble aller bien<br>Le laboratoire rapporte que l'Hemoglobine A1C dépasse le niveau recommandé<br>Le patient déclare qu’il fume depuis longtemps"
+    "noteText":"The patient states that everything seems to be fine<br>Lab reports Hemoglobin A1C exceeds recommended level<br>The patient declares that he is a long time Smoker"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Le patient déclare qu'il fume depuis peu"
+    "noteText":"Patient states that they are short term Smoker"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Tests de laboratoire indiquant une microalbumine élevée"
+    "noteText":"Lab reports Microalbumine high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Le patient déclare qu'il est fumeur et qu'il a cessé de fumer l'année dernière<br>Il se plaint également de crises d’apnée respiratoire anormales<br>Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
+    "noteText":"Patient states that they are short term Smoker and quit within last year<br>Patient also complains that of Abnormal breathing spells<br>Lab reports Cholesterol LDL high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 3,
     "patientLastName":"Arnold",
     "patientFirstName":"Edward",
-    "noteText":"Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
-  },
-  {
-    "_class" : "com.mediscreen.note.domain.Note",
-    "patientId": 3,
-    "patientLastName":"Arnold",
-    "patientFirstName":"Edward",
-    "noteText":"Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
+    "noteText":"Lab reports Cholesterol LDL high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare qu'il lui est devenu difficile de monter les escaliers<br>Il se plaint également d’être essoufflé<br>Tests de laboratoire indiquant que les anticorps sont élevés<br>Reaction aux médicaments"
+    "noteText":"Patient states that walking up stairs has become difficult<br>Patient also complains that they are having shortness of breath<br>Lab reports Antibodies high<br>Reaction to medication"
+
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare qu'il a mal au dos lorsqu'il reste assis pendant longtemps"
+    "noteText":"Patient states that they are experiencing back pain when seated for a long time"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 4,
     "patientLastName":"Sharp",
     "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hemoglobine A1C supérieure au niveau recommandé"
-  },
-  {
-    "_class" : "com.mediscreen.note.domain.Note",
-    "patientId": 4,
-    "patientLastName":"Sharp",
-    "patientFirstName":"Anthony",
-    "noteText":"Le patient déclare avoir commencé à fumer depuis peu<br>Hemoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Patient states that they are a short term Smoker<br>Hemoglobin A1C above recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 5,
     "patientLastName":"Ince",
     "patientFirstName":"Wendy",
-    "noteText":"Le patient déclare avoir des douleurs au cou occasionnellement<br>Le patient remarque également que certains aliments ont un goût différent<br>Reaction apparente aux médicaments<br>Poids corporel supérieur au poids recommandé"
+    "noteText":"Patient reports occasional neck pain<br>The patient also notices that some foods taste different<br>Apparent Reaction to medication<br>Weight greater than recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 5,
     "patientLastName":"Ince",
     "patientFirstName":"Wendy",
-    "noteText":"Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.<br>Taille incluse dans la fourchette concernée"
+    "noteText":"The patient reports having had several episodes of Dizziness since the last visit<br>Height included in the relevant range"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 5,
     "patientLastName":"Ince",
     "patientFirstName":"Wendy",
-    "noteText":"Le patient déclare qu'il souffre encore de douleurs cervicales occasionnelles<br>Tests de laboratoire indiquant une microalbumine élevée<br>Fumeur, il a arrêté dans les 12 mois précédents"
+    "noteText":"Patient says he still suffers from occasional neck pain<br>Lab reports Microalbumine high<br>Smoker, he quit in the previous 12 months"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 5,
     "patientLastName":"Ince",
     "patientFirstName":"Wendy",
-    "noteText":"Le patient déclare avoir eu plusieurs épisodes de vertige depuis la dernière visite.<br>Tests de laboratoire indiquant que les anticorps sont élevés"
+    "noteText":"The patient reports having had several episodes of Dizziness since the last visit<br>Lab reports Antibodies high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 6,
     "patientLastName":"Ross",
     "patientFirstName":"Tracey",
-    "noteText":"Le patient déclare qu'il se sent bien<br>Poids corporel supérieur au poids recommandé"
+    "noteText":"Patient states that he is feeling well<br>Weight greater than recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 6,
     "patientLastName":"Ross",
     "patientFirstName":"Tracey",
-    "noteText":"Le patient déclare qu'il se sent bien"
+    "noteText":"Patient states that he is feeling well"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 7,
     "patientLastName":"Wilson",
     "patientFirstName":"Claire",
-    "noteText":"Le patient déclare qu'il se réveille souvent avec une raideur articulaire<br>Il se plaint également de difficultés pour s’endormir<br>Poids corporel supérieur au poids recommandé<br>Tests de laboratoire indiquant un taux de Cholesterol LDL élevé"
+    "noteText":"The patient states that he often wakes up with joint stiffness<br>He also complains of difficulty falling asleep<br>Weight greater than recommended level<br>Lab reports Cholesterol LDL high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 8,
     "patientLastName":"Buckland",
     "patientFirstName":"Max",
-    "noteText":"Les tests de laboratoire indiquent que les anticorps sont élevés<br>Hemoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Lab reports Antibodies high<br>Hemoglobin A1C exceeds recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 9,
     "patientLastName":"Clark",
     "patientFirstName":"Natalie",
-    "noteText":"Le patient déclare avoir de la difficulté à se concentrer sur ses devoirs scolaires<br>Hemoglobine A1C supérieure au niveau recommandé"
+    "noteText":"Patient reports having difficulty concentrating on homework<br>Hemoglobin A1C exceeds recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 9,
     "patientLastName":"Clark",
     "patientFirstName":"Natalie",
-    "noteText":"Le patient déclare qu'il s’impatiente facilement en cas d’attente prolongée<br>Il signale également que les produits du distributeur automatique ne sont pas bons<br>Tests de laboratoire signalant des taux anormaux de cellules sanguines"
+    "noteText":"Patient states that he is easily impatient with prolonged wait<br>It also reports that the vending machine products are not good<br>Lab reports Abnormal levels of blood cells"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 9,
     "patientLastName":"Clark",
     "patientFirstName":"Natalie",
-    "noteText":"Le patient signale qu'il est facilement irrité par des broutilles<br>Il déclare également que l'aspirateur des voisins fait trop de bruit<br>Tests de laboratoire indiquant que les anticorps sont élevés"
+    "noteText":"The patient reports that he is easily irritated by trifles<br>He also states that the neighbors vacuum cleaner makes too much noise<br>Lab reports Antibodies high"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 10,
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
-    "noteText":"Le patient déclare qu'il n'a aucun problème"
+    "noteText":"The patient declares that he has no problem"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 10,
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
-    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Taille incluse dans la fourchette concernée<br>Hemoglobine A1C supérieure au niveau recommandé"
+    "noteText":"The patient declares that he has no problem<br>Height included in the relevant range<br>Hemoglobin A1C exceeds recommended level"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 10,
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
-    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Poids corporel supérieur au poids recommandé<br>Le patient a signalé plusieurs épisodes de vertige depuis sa dernière visite"
+    "noteText":"The patient declares that he has no problem<br>Weight greater than recommended level<br>The patient has reported several episodes of Dizziness since his last visit"
   },
   {
     "_class" : "com.mediscreen.note.domain.Note",
     "patientId": 10,
     "patientLastName":"Bailey",
     "patientFirstName":"Piers",
-    "noteText":"Le patient déclare qu'il n'a aucun problème<br>Tests de laboratoire indiquant une microalbumine élevée"
+    "noteText":"The patient declares that he has no problem<br>Lab reports Microalbumine high"
   }
 ]
