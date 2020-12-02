@@ -14,8 +14,8 @@ import java.util.List;
 @Service
 public class NoteServiceImpl implements INoteService {
 
-    private NoteRepository noteRepository;
-    private INoteRepositoryCustom noteRepositoryCustom;
+    private final NoteRepository noteRepository;
+    private final INoteRepositoryCustom noteRepositoryCustom;
 
     public NoteServiceImpl(NoteRepository noteRepository, INoteRepositoryCustom noteRepositoryCustom) {
         this.noteRepository = noteRepository;
