@@ -33,7 +33,7 @@ public class NoteController {
     @Value("${patientMicroserviceUrl}")
     private String patientMicroserviceUrl;
 
-    private INoteService noteService;
+    private final INoteService noteService;
 
     public NoteController(INoteService noteService) {
         this.noteService = noteService;
