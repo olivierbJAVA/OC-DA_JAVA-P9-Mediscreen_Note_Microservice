@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class NoteRepositoryCustomImpl implements INoteRepositoryCustom {
 
-    private MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
     public NoteRepositoryCustomImpl(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
