@@ -1,4 +1,4 @@
-# Mediscreen - Patient application
+# Mediscreen - Note application
 Welcome to Mediscreen !
 
 - Mediscreen is a medical company specialized in diseases diagnosis
@@ -9,13 +9,13 @@ Welcome to Mediscreen !
 The application is composed of 3 Microservices :
 - Mediscreen Patient : in charge of managing patients and their personal data
 - Mediscreen Note : in charge of managing notes written by doctors
-- Mediscreen Report : in charge of generating reports evaluating the risk for patients to develop diabetes
+- Mediscreen Rapport : in charge of generating reports evaluating the risk for patients to develop diabetes
 
 This repository contains the Mediscreen Note Microservice.
 
 You will find the other Microservices in the following repositories :
 - Mediscreen Patient : 
-- Mediscreen Report : 
+- Mediscreen Rapport : 
 
 ### Technologies used
 
@@ -75,6 +75,8 @@ Three Spring profiles are available for each following phase :
 There is a global Spring configuration properties file : application.properties, and a dedicated configuration properties file for each profile : application-*profileName*.properties. 
 These files are stored in the src/main/resources directory for PROD and DEV profiles and in the src/test/resources directory for the TEST profile.
 
+The URL (hostname + port) for the Patient Microservice can be configured in these files.
+
 ### DataBase creation and initialization
 
 By default there is no username and password for connection to the database.
@@ -90,7 +92,7 @@ Then you can import and run the application from your favorite IDE.
 
 ### Endpoints
 
-For information about EndPoints that are exposed by the Mediscreen Note Microservice, please refer to the document in this repository called : 
+For information about EndPoints that are exposed by the Mediscreen Note Microservice, please refer to the document located in this repository called : 
 
 ### Docker container deployment
 
@@ -98,7 +100,7 @@ A Dockerfile is present in this repository in order to deploy the application in
 >In order to build a Docker Image using this Dockerfile, please use the following command line (in the *Dockerfile* directory) :
 `docker build -t note .`
 
-When the Note Docker image is created, you can run the Microservice using the *docker-compose.yml* file present in this repository.
+When the Note Docker image is created, you can run the Microservice using the *docker-compose.yml* file located in this repository.
 >To do this, please use the following command line (in the *docker-compose.yml* directory) :
 `docker-compose up`
  
@@ -107,6 +109,8 @@ This will :
 - Launch the Note application in a container
 - Create a dedicated Docker bridge network to enable their communication 
 - Map the directory containing the MongoDB data in an external directory so that data are note lost if container is deleted
+
+In order to run the whole application, i.e. the 3 Microservices, you can use the *docker-compose.yml* file that is located in the Rapport Microservice repository. 
  
 ### Tests
 
