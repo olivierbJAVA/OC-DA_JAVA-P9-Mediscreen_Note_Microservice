@@ -158,27 +158,6 @@ public class NoteControllerTest {
 
     }
 
-
-/*
-    @Test
-    public void getPatientHistoryByPatientLastNameAndFirstName_whenPatientNotExist() {
-        //ARRANGE
-        doThrow(ResourceNotFoundException.class).when(mockNoteService).findNotesByPatientLastNameAndFirstName("PatientLastName","PatientFirstName");
-
-        //ACT & ASSERT
-        try {
-            mockMvc.perform(get("/patHistoryByPatientLastNameAndFirstName")
-                    .param("lastName","PatientLastName")
-                    .param("firstName","PatientFirstName"))
-                    .andExpect(status().isNotFound())
-                    .andExpect(view().name("errorResourceNotFound"));
-        } catch (Exception e) {
-            logger.error("Error in MockMvc", e);
-        }
-
-        verify(mockNoteService, times(1)).findNotesByPatientLastNameAndFirstName("PatientLastName","PatientFirstName");
-    }
-*/
     @Test
     public void getPatientHistoryByPatientId_whenIdPatientExist() {
         //ARRANGE

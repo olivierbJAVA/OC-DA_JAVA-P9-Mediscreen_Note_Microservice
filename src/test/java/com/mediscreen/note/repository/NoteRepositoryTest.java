@@ -33,7 +33,6 @@ public class NoteRepositoryTest {
     @BeforeEach
     public void setup(){
         mongoTemplate.dropCollection(Note.class);
-        //noteRepositoryUnderTest.deleteAll();
     }
 
     @AfterEach

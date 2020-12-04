@@ -136,20 +136,6 @@ public class NoteController {
 
         return new ResponseEntity<>(notes, HttpStatus.FOUND);
     }
-/*
-    @GetMapping("/patHistoryByPatientId")
-    public String getPatientHistoryByPatientId(@RequestParam("patId") long patientId, Model model) {
-
-        logger.info("Request : GET /patHistoryByPatientId with patient id = {}", patientId);
-
-        List<Note> notes = noteService.findNotesByPatientId(patientId);
-        model.addAttribute("notes", notes);
-
-        logger.info("Success : notes for patient with patient id {}, returning '/notes' view", patientId);
-
-        return "notes/list";
-    }
-*/
 
     /**
      * Method managing the GET "/notes/updateform/{id}" endpoint HTTP request to update a note using a HTML form.
