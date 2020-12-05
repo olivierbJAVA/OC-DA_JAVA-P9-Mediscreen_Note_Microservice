@@ -14,8 +14,8 @@ The application is composed of 3 Microservices :
 This repository contains the Mediscreen Note Microservice.
 
 You will find the other Microservices in the following repositories :
-- Mediscreen Patient : 
-- Mediscreen Rapport : 
+- Mediscreen Patient : <https://github.com/ob78/Mediscreen_Patient_Microservice/tree/develop>
+- Mediscreen Rapport : <https://github.com/ob78/Mediscreen_Rapport_Microservice/tree/develop>
 
 ### Technologies used
 
