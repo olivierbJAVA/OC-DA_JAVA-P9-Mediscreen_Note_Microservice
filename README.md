@@ -84,7 +84,7 @@ The URL (hostname + port) for the Patient Microservice communication can be conf
 By default there is no username and password for connection to the database.
 We kept this configuration for the sake of simplicity.
 
-For the DEV profile, the database is initialized with some notes. This is done using the file : data.json.
+For the DEV profile, the database is initialized with some notes. This is done using the file : *data.json*.
 
 ### Microservice running
 
@@ -94,7 +94,7 @@ You can run the Microservice in an IDE or in Docker containers.
 
 ### Endpoints
 
-For information about EndPoints that are exposed by the Mediscreen Note Microservice, please refer to the document located in this repository called : 
+For information about EndPoints that are exposed by the Mediscreen Note Microservice, please refer to the document located in this repository called : *Specifications_API-REST_Sprint2-NOTE*
 
 ### Docker container deployment
 
