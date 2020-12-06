@@ -34,11 +34,11 @@ FrontEnd side :
 - HTML/CSS + Bootstrap for the views (User Interface)
 - Thymeleaf as template engine
 
-Microservices communicate using REST APIs.
+Microservices communicate using REST APIs and Feign HTTP client.
 
 ### Getting Started
 
-The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+The following instructions will get you a copy of the project up and running on your local machine.
 
 You need to install the following software :
 
@@ -64,6 +64,8 @@ You will find below a step by step explanation that tell you how to get a develo
 4.Install Docker + Docker-Compose :
 <https://docs.docker.com/get-docker/>
 
+>Please note that the application has been developed with the IntelliJ IDE.
+
 ### Profiles and Configuration
 
 Three Spring profiles are available for each following phase :
@@ -84,13 +86,11 @@ We kept this configuration for the sake of simplicity.
 
 For the DEV profile, the database is initialized with some notes. This is done using the file : data.json.
 
-### Application running
+### Microservice running
 
-If you want to run the application in an IDE, please use the DEV profile.  
-  
-If you want to run the application in Docker containers, please use the PROD profile.  
-
->Please note that the application has been developed with the IntelliJ IDE.
+You can run the Microservice in an IDE or in Docker containers.
+- To run the Microservice in an IDE, please use the DEV profile.  
+- To run the Microservice in Docker containers, please use the PROD profile.  
 
 ### Endpoints
 
@@ -112,7 +112,7 @@ This will :
 - Create a dedicated Docker bridge network to enable their communication 
 - Map the directory containing the MongoDB data in an external directory so that data are note lost if container is deleted
 
-In order to run the whole application, i.e. the 3 Microservices, you can use the *docker-compose.yml* file that is located in the Rapport Microservice repository. 
+>In order to run the whole application, i.e. the 3 Microservices, you must use the *docker-compose.yml* file that is located in the Rapport Microservice repository. 
  
 ### Tests
 
