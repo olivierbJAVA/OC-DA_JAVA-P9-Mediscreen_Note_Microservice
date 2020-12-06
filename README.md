@@ -77,7 +77,7 @@ Three Spring profiles are available for each following phase :
 There is a global Spring configuration properties file : application.properties, and a dedicated configuration properties file for each profile : application-*profileName*.properties. 
 These files are stored in the src/main/resources directory for PROD and DEV profiles and in the src/test/resources directory for the TEST profile.
 
-The URL (hostname + port) for the Patient Microservice can be configured in these files.
+The URL (hostname + port) for the Patient Microservice communication can be configured in these files.
 
 ### DataBase creation and initialization
 
@@ -98,7 +98,7 @@ For information about EndPoints that are exposed by the Mediscreen Note Microser
 
 ### Docker container deployment
 
-A Dockerfile is present in this repository in order to deploy the application in a Docker container.
+A Dockerfile is present in this repository in order to deploy the Microservice in a Docker container.
 >In order to build a Docker Image using this Dockerfile, please use the following command line (in the *Dockerfile* directory) :
 `docker build -t note .`
 
